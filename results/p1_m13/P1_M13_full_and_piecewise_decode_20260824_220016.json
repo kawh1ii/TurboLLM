@@ -1,0 +1,70 @@
+{
+  "aggregate": {
+    "mode": "full_and_piecewise",
+    "actual_cudagraph_mode": "full_and_piecewise",
+    "phase": "decode",
+    "startup_s": 30.474342806,
+    "ready_vram_mib": 17427.0,
+    "target_prompt_tokens": 128,
+    "target_output_tokens": 512,
+    "concurrency": 8,
+    "request_count": 8,
+    "trial_count": 3,
+    "median_ttft_ms": 289.6888330578804,
+    "p95_ttft_ms": 291.85869907960296,
+    "median_tpot_ms": 2.1064332403869543,
+    "median_latency_ms": 1360.9060337767005,
+    "p95_latency_ms": 1362.6352450810373,
+    "request_throughput_rps": 5.83855570992177,
+    "prompt_tokens_per_s": 741.4965751600648,
+    "output_tokens_per_s": 2989.340523479946,
+    "total_tokens_per_s": 3730.837098640011
+  },
+  "trials": [
+    {
+      "wall_s": 1.4319138433784246,
+      "median_ttft_ms": 318.65597516298294,
+      "p95_ttft_ms": 320.4869408160448,
+      "median_tpot_ms": 2.1613229780572736,
+      "median_latency_ms": 1422.6839430630207,
+      "p95_latency_ms": 1424.3701613508165,
+      "request_throughput_rps": 5.586928317645833,
+      "prompt_tokens_per_s": 707.4447982219035,
+      "output_tokens_per_s": 2860.5072986346663,
+      "total_tokens_per_s": 3567.95209685657,
+      "prompt_tokens_total": 1013,
+      "output_tokens_total": 4096,
+      "trial": 1
+    },
+    {
+      "wall_s": 1.3702018782496452,
+      "median_ttft_ms": 284.78926327079535,
+      "p95_ttft_ms": 286.3208002410829,
+      "median_tpot_ms": 2.1064332403869543,
+      "median_latency_ms": 1360.9060337767005,
+      "p95_latency_ms": 1362.6352450810373,
+      "request_throughput_rps": 5.83855570992177,
+      "prompt_tokens_per_s": 741.4965751600648,
+      "output_tokens_per_s": 2989.340523479946,
+      "total_tokens_per_s": 3730.837098640011,
+      "prompt_tokens_total": 1016,
+      "output_tokens_total": 4096,
+      "trial": 2
+    },
+    {
+      "wall_s": 1.2900739703327417,
+      "median_ttft_ms": 289.6888330578804,
+      "p95_ttft_ms": 291.85869907960296,
+      "median_tpot_ms": 1.9443012635476902,
+      "median_latency_ms": 1283.0769326537848,
+      "p95_latency_ms": 1285.3074884042144,
+      "request_throughput_rps": 6.201194802757398,
+      "prompt_tokens_per_s": 786.0014412495002,
+      "output_tokens_per_s": 3175.011739011788,
+      "total_tokens_per_s": 3961.013180261288,
+      "prompt_tokens_total": 1014,
+      "output_tokens_total": 4096,
+      "trial": 3
+    }
+  ]
+}

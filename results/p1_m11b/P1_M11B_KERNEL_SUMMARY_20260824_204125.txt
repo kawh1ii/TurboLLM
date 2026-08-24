@@ -1,0 +1,141 @@
+========================================================================================================================
+P1-M11B PYTORCH PROFILER TRACE ANALYSIS
+========================================================================================================================
+PROFILE_DIR = /root/autodl-tmp/ai-infra/project1-turbollm/results/p1_m11b/torch_profile_20260824_204125
+TRACE_FILE_COUNT = 2
+TRACE_FILE = /root/autodl-tmp/ai-infra/project1-turbollm/results/p1_m11b/torch_profile_20260824_204125/autodl-container-1cf345b42f-d95a16f9_38891.async_llm.1787575352928470458.pt.trace.json.gz
+TRACE_FILE = /root/autodl-tmp/ai-infra/project1-turbollm/results/p1_m11b/torch_profile_20260824_204125/rank0.1787575353754380932.pt.trace.json.gz
+
+========================================================================================================================
+CUDA KERNEL SUMMARY
+========================================================================================================================
+CUDA_KERNEL_EVENT_COUNT = 54843
+CUDA_KERNEL_TOTAL_TIME_MS = 299.599215
+
+TOP CUDA KERNELS BY TOTAL CUDA TIME:
+01. TOTAL_MS=168.521330 PCT=56.249% COUNT=12466 AVG_US=13.518 NAME=void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_16x16_128x2_tn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_16x16_128x2_tn_align8::Params)
+02. TOTAL_MS=29.485677 PCT=9.842% COUNT=1325 AVG_US=22.253 NAME=std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, false, true, true, false, 6, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half>, float>)
+03. TOTAL_MS=28.973968 PCT=9.671% COUNT=3672 AVG_US=7.891 NAME=void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<64, 64, 256, 4, false, false, cutlass::half_t, Flash_kernel_traits<64, 64, 256, 4, cutlass::half_t> >, false, false, false, false, true, false, true, false>(flash::Flash_fwd_params)
+04. TOTAL_MS=16.176176 PCT=5.399% COUNT=3672 AVG_US=4.405 NAME=void flash::flash_fwd_splitkv_combine_kernel<Flash_fwd_kernel_traits<64, 64, 256, 4, false, false, cutlass::half_t, Flash_kernel_traits<64, 64, 256, 4, cutlass::half_t> >, 8, 4, true>(flash::Flash_fwd_params)
+05. TOTAL_MS=9.696946 PCT=3.237% COUNT=6048 AVG_US=1.603 NAME=void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})
+06. TOTAL_MS=5.510530 PCT=1.839% COUNT=3816 AVG_US=1.444 NAME=void vllm::reshape_and_cache_flash_kernel<unsigned short, unsigned short, (vllm::Fp8KVCacheDataType)0>(unsigned short const*, unsigned short const*, unsigned short*, unsigned short*, long const*, long, long, long, long, long, int, int, int, float const*, float const*, int)
+07. TOTAL_MS=5.286619 PCT=1.765% COUNT=3816 AVG_US=1.385 NAME=triton_per_fused_fused_add_rms_norm_2
+08. TOTAL_MS=4.961889 PCT=1.656% COUNT=1296 AVG_US=3.829 NAME=std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, false, true, true, false, 7, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half const>, cublasGemvTensorStridedBatched<__half>, float>)
+09. TOTAL_MS=4.774197 PCT=1.594% COUNT=3816 AVG_US=1.251 NAME=triton_per_fused_fused_add_rms_norm_0
+10. TOTAL_MS=4.513080 PCT=1.506% COUNT=3657 AVG_US=1.234 NAME=triton_poi_fused_3
+11. TOTAL_MS=3.952124 PCT=1.319% COUNT=3816 AVG_US=1.036 NAME=triton_poi_fused_mul_silu_slice_1
+12. TOTAL_MS=3.902137 PCT=1.302% COUNT=3168 AVG_US=1.232 NAME=void cublasLt::splitKreduce_kernel<32, 16, int, __half, __half, float, __half, false, __half, __half, __half, true, false, false, false>(cublasLt::cublasSplitKParams<float>, __half const*, __half const*, __half*, __half*, float const*, float const*, __half const*, __half const*, __half*, void*, long, float*, int*, float*, float*, float const*, float const*, float const*, float const*, float const*)
+13. TOTAL_MS=2.421926 PCT=0.808% COUNT=144 AVG_US=16.819 NAME=void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<64, 64, 256, 4, false, false, cutlass::half_t, Flash_kernel_traits<64, 64, 256, 4, cutlass::half_t> >, true, false, false, false, true, false, false, false>(flash::Flash_fwd_params)
+14. TOTAL_MS=1.587916 PCT=0.530% COUNT=216 AVG_US=7.351 NAME=void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align8::Params)
+15. TOTAL_MS=1.133305 PCT=0.378% COUNT=159 AVG_US=7.128 NAME=_gumbel_sample_kernel
+16. TOTAL_MS=0.968960 PCT=0.323% COUNT=48 AVG_US=20.187 NAME=void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_tn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_tn_align8::Params)
+17. TOTAL_MS=0.682663 PCT=0.228% COUNT=24 AVG_US=28.444 NAME=void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_tn_align8::Params)
+18. TOTAL_MS=0.677925 PCT=0.226% COUNT=801 AVG_US=0.846 NAME=memcpy32_post
+19. TOTAL_MS=0.543848 PCT=0.182% COUNT=159 AVG_US=3.420 NAME=void at::native::reduce_kernel<512, 1, at::native::ReduceOp<float, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<float, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4>)
+20. TOTAL_MS=0.538029 PCT=0.180% COUNT=24 AVG_US=22.418 NAME=void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_tn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_tn_align8::Params)
+21. TOTAL_MS=0.474880 PCT=0.159% COUNT=159 AVG_US=2.987 NAME=_gather_block_tables_kernel
+22. TOTAL_MS=0.459315 PCT=0.153% COUNT=159 AVG_US=2.889 NAME=_post_update_kernel
+23. TOTAL_MS=0.456460 PCT=0.152% COUNT=159 AVG_US=2.871 NAME=_combine_sampled_and_draft_tokens_kernel
+24. TOTAL_MS=0.437677 PCT=0.146% COUNT=159 AVG_US=2.753 NAME=_get_num_sampled_and_rejected_kernel
+25. TOTAL_MS=0.431441 PCT=0.144% COUNT=159 AVG_US=2.713 NAME=void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1}>(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>, at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1} const&, bool)::{lambda(int)#1}>(long, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1}>(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>, at::native::index_kernel_impl<at::native::OpaqueType<8> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1} const&, bool)::{lambda(int)#1})
+26. TOTAL_MS=0.328722 PCT=0.110% COUNT=159 AVG_US=2.067 NAME=void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<4> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1}>(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>, at::native::index_kernel_impl<at::native::OpaqueType<4> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1} const&, bool)::{lambda(int)#1}>(long, at::native::gpu_index_kernel<at::native::index_kernel_impl<at::native::OpaqueType<4> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1}>(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>, at::native::index_kernel_impl<at::native::OpaqueType<4> >(at::TensorIteratorBase&, c10::ArrayRef<long>, c10::ArrayRef<long>)::{lambda(char*, char const*, long)#1} const&, bool)::{lambda(int)#1})
+27. TOTAL_MS=0.320375 PCT=0.107% COUNT=24 AVG_US=13.349 NAME=ampere_fp16_s16816gemm_fp16_128x64_ldg8_f2f_stages_32x6_tn
+28. TOTAL_MS=0.314158 PCT=0.105% COUNT=159 AVG_US=1.976 NAME=_compute_slot_mappings_kernel
+29. TOTAL_MS=0.294782 PCT=0.098% COUNT=159 AVG_US=1.854 NAME=triton_per_fused__to_copy_embedding_rms_norm_0
+30. TOTAL_MS=0.268510 PCT=0.090% COUNT=318 AVG_US=0.844 NAME=void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul> >(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)
+
+========================================================================================================================
+KERNEL FAMILY ATTRIBUTION
+========================================================================================================================
+GEMM_MATMUL_CUDA_TIME_MS = 211.049833
+GEMM_MATMUL_CUDA_TIME_PERCENT = 70.444%
+ATTENTION_CUDA_TIME_MS = 53.082600
+ATTENTION_CUDA_TIME_PERCENT = 17.718%
+ELEMENTWISE_REDUCTION_CUDA_TIME_MS = 12.109361
+ELEMENTWISE_REDUCTION_CUDA_TIME_PERCENT = 4.042%
+RMSNORM_NORM_CUDA_TIME_MS = 10.355598
+RMSNORM_NORM_CUDA_TIME_PERCENT = 3.456%
+SAMPLING_CUDA_TIME_MS = 2.027442
+SAMPLING_CUDA_TIME_PERCENT = 0.677%
+MEMORY_COPY_CUDA_TIME_MS = 0.677925
+MEMORY_COPY_CUDA_TIME_PERCENT = 0.226%
+SOFTMAX_CUDA_TIME_MS = 0.000000
+SOFTMAX_CUDA_TIME_PERCENT = 0.000%
+KV_CACHE_CUDA_TIME_MS = 0.000000
+KV_CACHE_CUDA_TIME_PERCENT = 0.000%
+
+CLASSIFIED_KERNEL_TIME_PERCENT = 96.563%
+
+========================================================================================================================
+TOP CPU OPERATORS
+========================================================================================================================
+01. TOTAL_MS=22.319058 COUNT=144 NAME=vllm::unified_attention_with_output
+02. TOTAL_MS=15.655526 COUNT=50 NAME=## Call CompiledFxGraph None ##
+03. TOTAL_MS=15.321849 COUNT=477 NAME=aten::index
+04. TOTAL_MS=13.800951 COUNT=5676 NAME=aten::slice
+05. TOTAL_MS=13.755187 COUNT=999 NAME=aten::copy_
+06. TOTAL_MS=12.045104 COUNT=303 NAME=aten::mm
+07. TOTAL_MS=11.323892 COUNT=726 NAME=aten::to
+08. TOTAL_MS=10.729637 COUNT=159 NAME=aten::linear
+09. TOTAL_MS=10.568103 COUNT=363 NAME=aten::_to_copy
+10. TOTAL_MS=9.884408 COUNT=144 NAME=vllm::unified_kv_cache_update
+11. TOTAL_MS=9.081259 COUNT=159 NAME=aten::matmul
+12. TOTAL_MS=8.507941 COUNT=811 NAME=aten::fill_
+13. TOTAL_MS=8.450431 COUNT=318 NAME=aten::arange
+14. TOTAL_MS=8.106215 COUNT=144 NAME=_vllm_fa2_C::varlen_fwd
+15. TOTAL_MS=7.864740 COUNT=318 NAME=aten::pin_memory
+16. TOTAL_MS=7.786990 COUNT=1590 NAME=aten::empty
+17. TOTAL_MS=5.406756 COUNT=909 NAME=aten::new_empty
+18. TOTAL_MS=5.229669 COUNT=825 NAME=aten::empty_strided
+19. TOTAL_MS=5.006690 COUNT=7684 NAME=aten::as_strided
+20. TOTAL_MS=4.828488 COUNT=318 NAME=aten::_pin_memory
+
+========================================================================================================================
+INTERPRETATION
+========================================================================================================================
+This trace is a production vLLM execution trace.
+
+Unlike the synthetic P1-M11A CUDA kernels, these events
+come from the actual inference worker.
+
+PyTorch Profiler can identify:
+
+    CUDA kernel names
+    CUDA kernel durations
+    launch counts
+    CPU operators
+    relative CUDA-time contribution
+
+It does NOT replace Nsight Compute hardware counters.
+
+Because ERR_NVGPUCTRPERM blocks privileged counters,
+this run must NOT claim measured:
+
+    DRAM bandwidth utilization
+    Tensor Core utilization
+    achieved occupancy
+    SM hardware-counter utilization
+
+Those require a host that exposes NVIDIA GPU
+performance counters.
+
+The valid evidence chain on this host is therefore:
+
+    TTFT / TPOT / throughput
+            ↓
+    scheduler + KV metrics
+            ↓
+    coarse GPU telemetry
+            ↓
+    production CUDA kernel names and timing
+            ↓
+    hardware-counter layer unavailable on host
+
+========================================================================================================================
+FINAL TRACE VERDICT
+========================================================================================================================
+TRACE_FILES = SUCCESS
+CUDA_KERNEL_EVENTS = SUCCESS
+PRODUCTION_VLLM_KERNEL_TIMING = SUCCESS
+HARDWARE_COUNTER_LIMITATION = ERR_NVGPUCTRPERM
+VERDICT = READY_FOR_P1_M12_KERNEL_ATTRIBUTION_AND_OPTIMIZATION

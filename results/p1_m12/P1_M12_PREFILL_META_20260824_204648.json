@@ -1,0 +1,14 @@
+{
+  "phase": "prefill",
+  "target_prompt_tokens": 2048,
+  "target_output_tokens": 16,
+  "concurrency": 8,
+  "request_count": 16,
+  "wall_s": 0.7684789393097162,
+  "prompt_tokens_total": 32843,
+  "output_tokens_total": 256,
+  "prompt_tokens_median": 2053.0,
+  "output_tokens_median": 16.0,
+  "latency_median_ms": 360.7004154473543,
+  "output_tokens_per_s_profiled": 333.1255899217631
+}

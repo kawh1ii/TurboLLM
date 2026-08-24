@@ -1,0 +1,14 @@
+{
+  "phase": "decode",
+  "target_prompt_tokens": 128,
+  "target_output_tokens": 512,
+  "concurrency": 8,
+  "request_count": 8,
+  "wall_s": 1.761665178462863,
+  "prompt_tokens_total": 1011,
+  "output_tokens_total": 4096,
+  "prompt_tokens_median": 126.5,
+  "output_tokens_median": 512.0,
+  "latency_median_ms": 1750.8265785872936,
+  "output_tokens_per_s_profiled": 2325.072919687245
+}

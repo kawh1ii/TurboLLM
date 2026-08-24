@@ -1,0 +1,8 @@
+experiment,variant,parameter,arithmetic_intensity_flop_per_byte,time_ms,effective_gib_s,gflop_s,registers_per_thread,active_blocks_per_sm,occupancy_percent
+memory_bandwidth,stream_copy,0,0.000,0.582216,858.788,0.000,0,0,0.000
+arithmetic_intensity,fma_sweep,1,1.000,0.146022,856.033,919.158,14,6,100.000
+arithmetic_intensity,fma_sweep,4,4.000,0.145766,857.536,3683.091,16,6,100.000
+arithmetic_intensity,fma_sweep,16,16.000,0.145562,858.743,14753.092,16,6,100.000
+arithmetic_intensity,fma_sweep,64,64.000,0.199578,626.323,43040.573,16,6,100.000
+arithmetic_intensity,fma_sweep,256,256.000,0.685552,182.335,50119.815,16,6,100.000
+arithmetic_intensity,fma_sweep,1024,1024.000,2.614067,47.818,52576.671,16,6,100.000

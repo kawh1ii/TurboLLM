@@ -1,0 +1,7 @@
+experiment,variant,time_ms,useful_gib_s
+global_memory,coalesced,0.580950,860.659
+global_memory,strided,1.521050,328.720
+transpose,naive,1.885266,265.215
+transpose,shared_memory_tiled,0.644348,775.978
+warp_branch,uniform,0.157338,0.000
+warp_branch,divergent,0.233165,0.000

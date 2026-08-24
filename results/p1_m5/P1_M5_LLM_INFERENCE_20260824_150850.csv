@@ -1,0 +1,10 @@
+experiment,variant,seq_len,value,unit,notes
+prefill,use_cache_true,128,12.755743980407715,ms,tokens_per_second=10034.695
+prefill,use_cache_true,512,13.184000015258789,ms,tokens_per_second=38834.951
+prefill,use_cache_true,1024,13.652336120605469,ms,tokens_per_second=75005.478
+prefill,use_cache_true,2048,22.162976264953613,ms,tokens_per_second=92406.362
+kv_cache,theoretical,2048,24.0,MiB,
+kv_cache,observed_allocated_delta,2048,24.0,MiB,
+decode,with_kv_cache,1024,11.643360137939453,ms/token,
+decode,without_kv_cache,1024,19.526671409606934,ms/token,
+decode,kv_cache_speedup,1024,1.6770649690702262,x,

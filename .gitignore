@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+envs/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Models / checkpoints
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# CUDA build outputs
+*.o
+*.so
+*.a
+
+# Nsight / profiling
+*.ncu-rep
+*.nsys-rep
+*.sqlite
+
+# Runtime logs
+*.log
+
+# Large traces
+*trace*.json
+*trace*.json.gz
+*profile*.json
+*profile*.json.gz
+
+# Local caches
+cache/
+caches/
+huggingface/
+pip-cache/
+
+# Secrets / local environment
+.env
+.env.*
+secrets/
+credentials/
