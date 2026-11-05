@@ -1,0 +1,20 @@
+{
+  "version": "0.32.0",
+  "upstream_commit": "5df63a7203cdb9328d824a27b682e77c7b9928be",
+  "original_sha256": "d9a39870286c424cef2fc0730e24092ee3df67e848608e2278944846bab804ae",
+  "patched_sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371",
+  "changes": [
+    [
+      "                    assert num_new_tokens > 0\n\n                    # Apply Mamba alignment before encoder caps.\n",
+      "                    assert num_new_tokens > 0\n\n                    # TurboLLM extension: skip without losing queue ownership.\n                    if hasattr(self, \"_turbollm_cap\"):\n                        num_new_tokens = self._turbollm_cap(request, num_new_tokens)\n                        if num_new_tokens == 0:\n                            skip_request(request_queue)\n                            continue\n\n                    # Apply Mamba alignment before encoder caps.\n"
+    ],
+    [
+      "\n            # Apply Mamba alignment before encoder caps.\n",
+      "\n            # TurboLLM extension: per-request quotas; native owns allocation.\n            if hasattr(self, \"_turbollm_cap\"):\n                num_new_tokens = self._turbollm_cap(request, num_new_tokens)\n                if num_new_tokens == 0:\n                    req_index += 1\n                    continue\n\n            # Apply Mamba alignment before encoder caps.\n"
+    ],
+    [
+      "                new_blocks = self.kv_cache_manager.allocate_slots(\n                    request,\n                    num_tokens_past_hit,\n",
+      "                # TurboLLM extension: exact prefix-hit-aware admission demand.\n                if hasattr(self, \"_turbollm_admit\") and not self._turbollm_admit(\n                    request, num_new_local_computed_tokens, new_computed_blocks\n                ):\n                    skip_request(request_queue)\n                    continue\n                if hasattr(self, \"_turbollm_reserved_blocks\"):\n                    reserved_blocks = max(\n                        reserved_blocks, self._turbollm_reserved_blocks(request)\n                    )\n                new_blocks = self.kv_cache_manager.allocate_slots(\n                    request,\n                    num_tokens_past_hit,\n"
+    ]
+  ]
+}

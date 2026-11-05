@@ -1,0 +1,1068 @@
+{
+  "experiments": [
+    {
+      "experiment": "7b-calibration",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 48,
+      "goodput_requests_s": 3.286511593239652,
+      "output_tokens_s": 560.8979785795673,
+      "ttft_p95_ms": 151.06386141851544,
+      "tpot_p95_ms": 27.63722316546733,
+      "files": [
+        "7b-calibration/native-mixed-s61.json"
+      ]
+    },
+    {
+      "experiment": "7b-pressure",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 96,
+      "arrivals": 96,
+      "slo_pass": 24,
+      "goodput_requests_s": 0.36383576822575786,
+      "output_tokens_s": 242.85191020046187,
+      "ttft_p95_ms": 9556.931646261364,
+      "tpot_p95_ms": 28.351204487386852,
+      "files": [
+        "7b-pressure/budget-mixed-s63.json",
+        "7b-pressure/budget-mixed-s64.json",
+        "7b-pressure/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "7b-pressure",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 96,
+      "arrivals": 96,
+      "slo_pass": 23,
+      "goodput_requests_s": 0.3677001416116745,
+      "output_tokens_s": 254.0061617616841,
+      "ttft_p95_ms": 8145.115093747154,
+      "tpot_p95_ms": 24.774273680579114,
+      "files": [
+        "7b-pressure/native-mixed-s63.json",
+        "7b-pressure/native-mixed-s64.json",
+        "7b-pressure/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "ablation",
+      "kind": "mixed",
+      "mode": "no_reserve",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 23,
+      "goodput_requests_s": 0.38505194904677903,
+      "output_tokens_s": 397.0837552611755,
+      "ttft_p95_ms": 11964.131870493293,
+      "tpot_p95_ms": 17.48674781429953,
+      "files": [
+        "ablation/no_reserve-mixed-s63.json",
+        "ablation/no_reserve-mixed-s64.json",
+        "ablation/no_reserve-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "ablation",
+      "kind": "mixed",
+      "mode": "no_time",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 27,
+      "goodput_requests_s": 0.4677709513654969,
+      "output_tokens_s": 422.06927809715506,
+      "ttft_p95_ms": 10509.29590431042,
+      "tpot_p95_ms": 19.28789509849855,
+      "files": [
+        "ablation/no_time-mixed-s63.json",
+        "ablation/no_time-mixed-s64.json",
+        "ablation/no_time-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "burst",
+      "kind": "burst",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 27,
+      "goodput_requests_s": 0.43721197555043734,
+      "output_tokens_s": 397.96005596768697,
+      "ttft_p95_ms": 14339.840468857436,
+      "tpot_p95_ms": 24.89921196481198,
+      "files": [
+        "burst/budget-burst-s63.json",
+        "burst/budget-burst-s64.json",
+        "burst/budget-burst-s65.json"
+      ]
+    },
+    {
+      "experiment": "burst",
+      "kind": "burst",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 24,
+      "goodput_requests_s": 0.4288451720075067,
+      "output_tokens_s": 439.1374561356869,
+      "ttft_p95_ms": 11916.039056330917,
+      "tpot_p95_ms": 17.878449345227533,
+      "files": [
+        "burst/native-burst-s63.json",
+        "burst/native-burst-s64.json",
+        "burst/native-burst-s65.json"
+      ]
+    },
+    {
+      "experiment": "calibration",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 1,
+      "completed": 64,
+      "arrivals": 64,
+      "slo_pass": 64,
+      "goodput_requests_s": 6.398703708999304,
+      "output_tokens_s": 1100.5770379478802,
+      "ttft_p95_ms": 116.10918450169258,
+      "tpot_p95_ms": 16.91319142416941,
+      "files": [
+        "calibration/native-mixed-s61.json"
+      ]
+    },
+    {
+      "experiment": "cancel",
+      "kind": "cancel",
+      "mode": "budget",
+      "replicates": 1,
+      "completed": 10,
+      "arrivals": 16,
+      "slo_pass": 10,
+      "goodput_requests_s": 3.288930827101605,
+      "output_tokens_s": 420.98314586900545,
+      "ttft_p95_ms": 96.99461720883846,
+      "tpot_p95_ms": 14.664154919964357,
+      "files": [
+        "cancel/budget-cancel-s91.json"
+      ]
+    },
+    {
+      "experiment": "long8k",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 72,
+      "arrivals": 72,
+      "slo_pass": 61,
+      "goodput_requests_s": 2.2411465793403185,
+      "output_tokens_s": 446.80841987274687,
+      "ttft_p95_ms": 1187.9381127655506,
+      "tpot_p95_ms": 30.56575832155159,
+      "files": [
+        "long8k/budget-mixed-s63.json",
+        "long8k/budget-mixed-s64.json",
+        "long8k/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "long8k",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 72,
+      "arrivals": 72,
+      "slo_pass": 72,
+      "goodput_requests_s": 2.7910515493532517,
+      "output_tokens_s": 476.3394644229549,
+      "ttft_p95_ms": 530.9368774294853,
+      "tpot_p95_ms": 27.870056405296825,
+      "files": [
+        "long8k/native-mixed-s63.json",
+        "long8k/native-mixed-s64.json",
+        "long8k/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "low",
+      "kind": "low",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 48,
+      "goodput_requests_s": 2.124640249568684,
+      "output_tokens_s": 135.97697597239576,
+      "ttft_p95_ms": 56.466632056981325,
+      "tpot_p95_ms": 12.827164412195247,
+      "files": [
+        "low/budget-low-s63.json",
+        "low/budget-low-s64.json",
+        "low/budget-low-s65.json"
+      ]
+    },
+    {
+      "experiment": "low",
+      "kind": "low",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 48,
+      "goodput_requests_s": 2.13051832815606,
+      "output_tokens_s": 136.35317300198784,
+      "ttft_p95_ms": 53.73975052498281,
+      "tpot_p95_ms": 12.378525277156205,
+      "files": [
+        "low/native-low-s63.json",
+        "low/native-low-s64.json",
+        "low/native-low-s65.json"
+      ]
+    },
+    {
+      "experiment": "mixed",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.31285462989694,
+      "output_tokens_s": 906.7271901690776,
+      "ttft_p95_ms": 104.65169087983668,
+      "tpot_p95_ms": 17.53106647809073,
+      "files": [
+        "mixed/budget-mixed-s63.json",
+        "mixed/budget-mixed-s64.json",
+        "mixed/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "mixed",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.391641319505478,
+      "output_tokens_s": 920.1734518622682,
+      "ttft_p95_ms": 87.31780909001827,
+      "tpot_p95_ms": 17.05693531722769,
+      "files": [
+        "mixed/native-mixed-s63.json",
+        "mixed/native-mixed-s64.json",
+        "mixed/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "mixed",
+      "kind": "mixed",
+      "mode": "tuned-256-0.05",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.499070386755763,
+      "output_tokens_s": 938.5080126729836,
+      "ttft_p95_ms": 130.17031881026924,
+      "tpot_p95_ms": 16.585552112720027,
+      "files": [
+        "mixed/tuned-256-0.05-mixed-s63.json",
+        "mixed/tuned-256-0.05-mixed-s64.json",
+        "mixed/tuned-256-0.05-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "no-trace",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.3995354289076967,
+      "output_tokens_s": 409.12427920148144,
+      "ttft_p95_ms": 12294.942780490963,
+      "tpot_p95_ms": 20.2936158159002,
+      "files": [
+        "no-trace/budget-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "no-trace",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.43574962585452004,
+      "output_tokens_s": 446.2076168750285,
+      "ttft_p95_ms": 10465.943222912028,
+      "tpot_p95_ms": 17.889646921384205,
+      "files": [
+        "no-trace/native-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "no-trace",
+      "kind": "mixed",
+      "mode": "tuned-256-0.05",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 7,
+      "goodput_requests_s": 0.39328186177025065,
+      "output_tokens_s": 460.25214451741334,
+      "ttft_p95_ms": 9758.417372126132,
+      "tpot_p95_ms": 20.473203080244303,
+      "files": [
+        "no-trace/tuned-256-0.05-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "prefix",
+      "kind": "prefix",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 96,
+      "arrivals": 96,
+      "slo_pass": 96,
+      "goodput_requests_s": 4.395166236729579,
+      "output_tokens_s": 755.9685927174876,
+      "ttft_p95_ms": 86.71389655210078,
+      "tpot_p95_ms": 15.14098080329773,
+      "files": [
+        "prefix/budget-prefix-s63.json",
+        "prefix/budget-prefix-s64.json",
+        "prefix/budget-prefix-s65.json"
+      ]
+    },
+    {
+      "experiment": "prefix",
+      "kind": "prefix",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 96,
+      "arrivals": 96,
+      "slo_pass": 96,
+      "goodput_requests_s": 4.457513279153821,
+      "output_tokens_s": 766.6922840144571,
+      "ttft_p95_ms": 79.11997414194047,
+      "tpot_p95_ms": 14.80767073762405,
+      "files": [
+        "prefix/native-prefix-s63.json",
+        "prefix/native-prefix-s64.json",
+        "prefix/native-prefix-s65.json"
+      ]
+    },
+    {
+      "experiment": "pressure",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 25,
+      "goodput_requests_s": 0.3932556615160336,
+      "output_tokens_s": 395.45320261047533,
+      "ttft_p95_ms": 11956.448479555545,
+      "tpot_p95_ms": 21.092803752797796,
+      "files": [
+        "pressure/budget-mixed-s63.json",
+        "pressure/budget-mixed-s64.json",
+        "pressure/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "pressure",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 25,
+      "goodput_requests_s": 0.42819009448828066,
+      "output_tokens_s": 442.9295501582746,
+      "ttft_p95_ms": 9903.198132524267,
+      "tpot_p95_ms": 15.30386956562618,
+      "files": [
+        "pressure/native-mixed-s63.json",
+        "pressure/native-mixed-s64.json",
+        "pressure/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "pressure",
+      "kind": "mixed",
+      "mode": "tuned-256-0.05",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 26,
+      "goodput_requests_s": 0.47885477666597,
+      "output_tokens_s": 435.86425893862514,
+      "ttft_p95_ms": 9909.544376842678,
+      "tpot_p95_ms": 21.49338425599097,
+      "files": [
+        "pressure/tuned-256-0.05-mixed-s63.json",
+        "pressure/tuned-256-0.05-mixed-s64.json",
+        "pressure/tuned-256-0.05-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-mixed",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.317008300849366,
+      "output_tokens_s": 907.4360833449584,
+      "ttft_p95_ms": 101.15280142053962,
+      "tpot_p95_ms": 17.609211450120007,
+      "files": [
+        "production-mixed/budget-mixed-s63.json",
+        "production-mixed/budget-mixed-s64.json",
+        "production-mixed/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-mixed",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.497091629005144,
+      "output_tokens_s": 938.1703046835447,
+      "ttft_p95_ms": 85.3886810131371,
+      "tpot_p95_ms": 15.913529028588039,
+      "files": [
+        "production-mixed/native-mixed-s63.json",
+        "production-mixed/native-mixed-s64.json",
+        "production-mixed/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-mixed",
+      "kind": "mixed",
+      "mode": "tuned",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 144,
+      "goodput_requests_s": 5.439007445926189,
+      "output_tokens_s": 928.2572707714029,
+      "ttft_p95_ms": 130.96654289402068,
+      "tpot_p95_ms": 16.184685094736693,
+      "files": [
+        "production-mixed/tuned-mixed-s63.json",
+        "production-mixed/tuned-mixed-s64.json",
+        "production-mixed/tuned-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-pressure",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 26,
+      "goodput_requests_s": 0.44166600703394804,
+      "output_tokens_s": 417.2900466254791,
+      "ttft_p95_ms": 11529.251960571855,
+      "tpot_p95_ms": 19.39945437168101,
+      "files": [
+        "production-pressure/budget-mixed-s63.json",
+        "production-pressure/budget-mixed-s64.json",
+        "production-pressure/budget-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-pressure",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 27,
+      "goodput_requests_s": 0.517473854701279,
+      "output_tokens_s": 470.6939032566439,
+      "ttft_p95_ms": 8822.295313235372,
+      "tpot_p95_ms": 14.7890717678476,
+      "files": [
+        "production-pressure/native-mixed-s63.json",
+        "production-pressure/native-mixed-s64.json",
+        "production-pressure/native-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "production-pressure",
+      "kind": "mixed",
+      "mode": "tuned",
+      "replicates": 3,
+      "completed": 144,
+      "arrivals": 144,
+      "slo_pass": 30,
+      "goodput_requests_s": 0.556404348381155,
+      "output_tokens_s": 453.72147500355544,
+      "ttft_p95_ms": 9174.450084241107,
+      "tpot_p95_ms": 21.19454185947717,
+      "files": [
+        "production-pressure/tuned-mixed-s63.json",
+        "production-pressure/tuned-mixed-s64.json",
+        "production-pressure/tuned-mixed-s65.json"
+      ]
+    },
+    {
+      "experiment": "trace-overhead",
+      "kind": "mixed",
+      "mode": "budget",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.400666359032787,
+      "output_tokens_s": 410.2823516495739,
+      "ttft_p95_ms": 12660.170426173136,
+      "tpot_p95_ms": 19.967876950748206,
+      "files": [
+        "trace-overhead/budget-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "trace-overhead",
+      "kind": "mixed",
+      "mode": "native",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.44246209092219224,
+      "output_tokens_s": 453.08118110432486,
+      "ttft_p95_ms": 10151.96174196899,
+      "tpot_p95_ms": 17.64958278486102,
+      "files": [
+        "trace-overhead/native-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "trace-overhead",
+      "kind": "mixed",
+      "mode": "tuned-256-0.05",
+      "replicates": 1,
+      "completed": 48,
+      "arrivals": 48,
+      "slo_pass": 7,
+      "goodput_requests_s": 0.37228622678425477,
+      "output_tokens_s": 435.681252830945,
+      "ttft_p95_ms": 10654.044040152803,
+      "tpot_p95_ms": 21.372431440014886,
+      "files": [
+        "trace-overhead/tuned-256-0.05-mixed-s66.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "budget-h128",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.5396864815709683,
+      "output_tokens_s": 371.3042993208262,
+      "ttft_p95_ms": 8569.26337131299,
+      "tpot_p95_ms": 15.571630915157556,
+      "files": [
+        "tuning/budget-h128-mixed-s62.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "budget-h16",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 9,
+      "goodput_requests_s": 0.6714699168926311,
+      "output_tokens_s": 410.64115806411576,
+      "ttft_p95_ms": 7479.217138327658,
+      "tpot_p95_ms": 16.917160718756563,
+      "files": [
+        "tuning/budget-h16-mixed-s62.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "budget-h64",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 8,
+      "goodput_requests_s": 0.5997993472543617,
+      "output_tokens_s": 412.6619509110008,
+      "ttft_p95_ms": 7173.717576265335,
+      "tpot_p95_ms": 15.409809087703783,
+      "files": [
+        "tuning/budget-h64-mixed-s62.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "tuned-128-0",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 9,
+      "goodput_requests_s": 0.6643153417632212,
+      "output_tokens_s": 406.2657378960855,
+      "ttft_p95_ms": 6473.817191366106,
+      "tpot_p95_ms": 23.06754761228822,
+      "files": [
+        "tuning/tuned-128-0-mixed-s62.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "tuned-256-0.05",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 10,
+      "goodput_requests_s": 0.752308111946803,
+      "output_tokens_s": 414.07038481552036,
+      "ttft_p95_ms": 6289.440978458151,
+      "tpot_p95_ms": 22.592449853724734,
+      "files": [
+        "tuning/tuned-256-0.05-mixed-s62.json"
+      ]
+    },
+    {
+      "experiment": "tuning",
+      "kind": "mixed",
+      "mode": "tuned-512-0.1",
+      "replicates": 1,
+      "completed": 32,
+      "arrivals": 32,
+      "slo_pass": 7,
+      "goodput_requests_s": 0.5243167973393663,
+      "output_tokens_s": 412.2628075079818,
+      "ttft_p95_ms": 6386.771822255105,
+      "tpot_p95_ms": 22.7931103922104,
+      "files": [
+        "tuning/tuned-512-0.1-mixed-s62.json"
+      ]
+    }
+  ],
+  "traces": {
+    "7b-calibration/native.trace.jsonl": {
+      "steps": 606,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.7655471563339233,
+      "scheduler_p95_ms": 1.8672258593142033,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 5179,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "7b-pressure/budget.trace.jsonl": {
+      "steps": 3087,
+      "preemptions": 22,
+      "admission_denials": 4002,
+      "recomputed_tokens": 3676,
+      "forced_steps": 1691,
+      "scheduler_p50_ms": 1.3738162815570831,
+      "scheduler_p95_ms": 4.2355338111519805,
+      "planner_p95_ms": 2.2133053280413137,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "7b-pressure/native.trace.jsonl": {
+      "steps": 3099,
+      "preemptions": 33,
+      "admission_denials": 0,
+      "recomputed_tokens": 3823,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.5466239526867867,
+      "scheduler_p95_ms": 1.2909622862935064,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "ablation/no_reserve.trace.jsonl": {
+      "steps": 4283,
+      "preemptions": 58,
+      "admission_denials": 0,
+      "recomputed_tokens": 5038,
+      "forced_steps": 2751,
+      "scheduler_p50_ms": 2.1090740337967873,
+      "scheduler_p95_ms": 4.612884763628244,
+      "planner_p95_ms": 3.3359718509018417,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "ablation/no_time.trace.jsonl": {
+      "steps": 4135,
+      "preemptions": 48,
+      "admission_denials": 10736,
+      "recomputed_tokens": 12903,
+      "forced_steps": 2859,
+      "scheduler_p50_ms": 1.9248146563768387,
+      "scheduler_p95_ms": 3.1302547082304946,
+      "planner_p95_ms": 0.793174747377634,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "burst/budget.trace.jsonl": {
+      "steps": 4213,
+      "preemptions": 46,
+      "admission_denials": 8208,
+      "recomputed_tokens": 12716,
+      "forced_steps": 3069,
+      "scheduler_p50_ms": 2.395438030362129,
+      "scheduler_p95_ms": 5.898832343518732,
+      "planner_p95_ms": 3.453282639384269,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "burst/native.trace.jsonl": {
+      "steps": 4358,
+      "preemptions": 49,
+      "admission_denials": 0,
+      "recomputed_tokens": 8461,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.9852098301053047,
+      "scheduler_p95_ms": 1.4089437667280436,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "calibration/native.trace.jsonl": {
+      "steps": 686,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 1.1810953728854656,
+      "scheduler_p95_ms": 1.9336806144565344,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "cancel/budget.trace.jsonl": {
+      "steps": 238,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.6730617024004459,
+      "scheduler_p95_ms": 1.2534983921796081,
+      "planner_p95_ms": 0.2823276445269584,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "long8k/budget.trace.jsonl": {
+      "steps": 1414,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.6978185847401619,
+      "scheduler_p95_ms": 1.6718869563192122,
+      "planner_p95_ms": 0.42015970684587955,
+      "free_blocks_at_end": 24934,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "long8k/native.trace.jsonl": {
+      "steps": 1363,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.7700538262724876,
+      "scheduler_p95_ms": 1.7608322203159332,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24138,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "low/budget.trace.jsonl": {
+      "steps": 1725,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.35744253545999527,
+      "scheduler_p95_ms": 0.66741444170475,
+      "planner_p95_ms": 0.1810884103178978,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "low/native.trace.jsonl": {
+      "steps": 1744,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.26290537789463997,
+      "scheduler_p95_ms": 0.507871201261878,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "mixed/budget.trace.jsonl": {
+      "steps": 1911,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 1.0002674534916878,
+      "scheduler_p95_ms": 2.5914167053997517,
+      "planner_p95_ms": 0.5509709008038044,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "mixed/native.trace.jsonl": {
+      "steps": 1945,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.8595138788223267,
+      "scheduler_p95_ms": 1.886613294482231,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "mixed/tuned-256-0.05.trace.jsonl": {
+      "steps": 1950,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.6581167690455914,
+      "scheduler_p95_ms": 1.8311960157006977,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "prefix/budget.trace.jsonl": {
+      "steps": 1612,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.8688066154718399,
+      "scheduler_p95_ms": 2.065716916695234,
+      "planner_p95_ms": 0.45508323237299886,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "prefix/native.trace.jsonl": {
+      "steps": 1622,
+      "preemptions": 0,
+      "admission_denials": 0,
+      "recomputed_tokens": 0,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.707126222550869,
+      "scheduler_p95_ms": 1.619069650769233,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 24917,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "pressure/budget.trace.jsonl": {
+      "steps": 4283,
+      "preemptions": 42,
+      "admission_denials": 7939,
+      "recomputed_tokens": 11778,
+      "forced_steps": 3031,
+      "scheduler_p50_ms": 1.8976954743266106,
+      "scheduler_p95_ms": 5.267847888171673,
+      "planner_p95_ms": 2.96835647895932,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "pressure/native.trace.jsonl": {
+      "steps": 4268,
+      "preemptions": 44,
+      "admission_denials": 0,
+      "recomputed_tokens": 5003,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.9197895415127277,
+      "scheduler_p95_ms": 1.3737106695771215,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "pressure/tuned-256-0.05.trace.jsonl": {
+      "steps": 4371,
+      "preemptions": 92,
+      "admission_denials": 0,
+      "recomputed_tokens": 14575,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.8811475709080696,
+      "scheduler_p95_ms": 1.329667866230011,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "trace-overhead/budget.trace.jsonl": {
+      "steps": 1358,
+      "preemptions": 14,
+      "admission_denials": 2538,
+      "recomputed_tokens": 3931,
+      "forced_steps": 1044,
+      "scheduler_p50_ms": 2.0186598412692547,
+      "scheduler_p95_ms": 5.3120766766369325,
+      "planner_p95_ms": 3.0119667295366486,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "trace-overhead/native.trace.jsonl": {
+      "steps": 1408,
+      "preemptions": 18,
+      "admission_denials": 0,
+      "recomputed_tokens": 3048,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.9252931922674179,
+      "scheduler_p95_ms": 1.3247225899249313,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "trace-overhead/tuned-256-0.05.trace.jsonl": {
+      "steps": 1418,
+      "preemptions": 32,
+      "admission_denials": 0,
+      "recomputed_tokens": 5456,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.9058909490704536,
+      "scheduler_p95_ms": 1.4525770209729665,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "tuning/budget-h128.trace.jsonl": {
+      "steps": 1073,
+      "preemptions": 0,
+      "admission_denials": 1889,
+      "recomputed_tokens": 0,
+      "forced_steps": 680,
+      "scheduler_p50_ms": 1.5917085111141205,
+      "scheduler_p95_ms": 4.159312509000301,
+      "planner_p95_ms": 2.273128926753998,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "tuning/budget-h16.trace.jsonl": {
+      "steps": 986,
+      "preemptions": 9,
+      "admission_denials": 1478,
+      "recomputed_tokens": 3316,
+      "forced_steps": 534,
+      "scheduler_p50_ms": 1.2300880625844002,
+      "scheduler_p95_ms": 3.891556290909648,
+      "planner_p95_ms": 2.180378884077072,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "tuning/budget-h64.trace.jsonl": {
+      "steps": 971,
+      "preemptions": 1,
+      "admission_denials": 1743,
+      "recomputed_tokens": 192,
+      "forced_steps": 592,
+      "scheduler_p50_ms": 1.3370094820857048,
+      "scheduler_p95_ms": 4.0786839090287685,
+      "planner_p95_ms": 2.161482349038124,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": {}
+    },
+    "tuning/tuned-128-0.trace.jsonl": {
+      "steps": 1042,
+      "preemptions": 23,
+      "admission_denials": 0,
+      "recomputed_tokens": 3858,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.8846623823046684,
+      "scheduler_p95_ms": 1.2320107314735649,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "tuning/tuned-256-0.05.trace.jsonl": {
+      "steps": 1034,
+      "preemptions": 19,
+      "admission_denials": 0,
+      "recomputed_tokens": 3589,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.874360091984272,
+      "scheduler_p95_ms": 1.160171302035451,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    },
+    "tuning/tuned-512-0.1.trace.jsonl": {
+      "steps": 1056,
+      "preemptions": 7,
+      "admission_denials": 0,
+      "recomputed_tokens": 1967,
+      "forced_steps": 0,
+      "scheduler_p50_ms": 0.8621425367891788,
+      "scheduler_p95_ms": 1.1411109007894993,
+      "planner_p95_ms": null,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0,
+      "ledger_at_end": null
+    }
+  }
+}

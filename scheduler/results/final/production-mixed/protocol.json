@@ -1,0 +1,19 @@
+{
+  "baseline": "exact original vLLM scheduler; no tracing subclass",
+  "policy": "BudgetScheduler with trace writing disabled",
+  "seeds": "63,64,65",
+  "kv_blocks": null,
+  "count": 48,
+  "rate": 8,
+  "config": {
+    "coefficients": [
+      10.399183563605852,
+      0.0,
+      0.10184102086167074,
+      0.040000157685720614,
+      0.0
+    ],
+    "decode_horizon": 16
+  },
+  "native_tuning_selection": "tuned-256-0.05"
+}

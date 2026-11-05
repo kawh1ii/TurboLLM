@@ -1,0 +1,7 @@
+{
+  "reference": "/Users/yang/Documents/Codex/2026-11-04/new-chat-3/outputs/TurboLLM-v2/results/correctness-final/native-mixed-s61.json",
+  "candidate": "/Users/yang/Documents/Codex/2026-11-04/new-chat-3/outputs/TurboLLM-v2/results/correctness-final/budget-mixed-s61.json",
+  "requests": 16,
+  "exact_matches": 16,
+  "differences": []
+}

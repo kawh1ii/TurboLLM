@@ -1,0 +1,2 @@
+{"file": "results/correctness-final/budget.trace.jsonl", "steps": 810, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 25427}
+{"file": "results/correctness-final/native.trace.jsonl", "steps": 797, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 25427}

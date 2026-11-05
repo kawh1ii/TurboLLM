@@ -1,0 +1,23 @@
+{
+  "features": [
+    "intercept",
+    "decode_requests",
+    "decode_context_1k",
+    "prefill_tokens",
+    "prefill_attention_1m"
+  ],
+  "train_samples": 286,
+  "held_out_samples": 286,
+  "held_out_mae_ms": 0.8904891645663032,
+  "held_out_p95_abs_error_ms": 2.0974654147823406,
+  "held_out_median_relative_error": 0.034142289925878616,
+  "rank": 5,
+  "coefficients": [
+    17.91941390153587,
+    0.0,
+    0.2678922612936556,
+    0.07628296609220944,
+    13.055410583163011
+  ],
+  "warning": "Alternate steps are a diagnostic holdout, not independent workload generalization."
+}

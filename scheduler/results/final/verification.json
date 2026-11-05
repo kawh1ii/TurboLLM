@@ -1,0 +1,60 @@
+{
+  "unit_tests": {
+    "passed": true,
+    "count": 21
+  },
+  "strict_output": {
+    "special_cases": 17,
+    "concurrent_pressure": 16,
+    "exact_matches": 33,
+    "mode": "batch invariant, BF16, eager, Qwen2.5-3B-Instruct"
+  },
+  "completed_stages": 14,
+  "request_files": 87,
+  "request_records": 3536,
+  "statuses": {
+    "completed": 3530,
+    "cancelled": 6
+  },
+  "trace_files": 30,
+  "checked_engine_steps": 63259,
+  "checked_policy_steps": 31289,
+  "quota_and_drain_checks_passed": true,
+  "source_state_checks": {
+    "production-mixed": {
+      "native": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": false,
+        "sha256": "d9a39870286c424cef2fc0730e24092ee3df67e848608e2278944846bab804ae"
+      },
+      "tuned": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": false,
+        "sha256": "d9a39870286c424cef2fc0730e24092ee3df67e848608e2278944846bab804ae"
+      },
+      "budget": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": true,
+        "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+      }
+    },
+    "production-pressure": {
+      "native": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": false,
+        "sha256": "d9a39870286c424cef2fc0730e24092ee3df67e848608e2278944846bab804ae"
+      },
+      "tuned": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": false,
+        "sha256": "d9a39870286c424cef2fc0730e24092ee3df67e848608e2278944846bab804ae"
+      },
+      "budget": {
+        "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "patched": true,
+        "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+      }
+    }
+  },
+  "scope": "Audits saved evidence and pure policy tests; does not rerun GPU inference."
+}

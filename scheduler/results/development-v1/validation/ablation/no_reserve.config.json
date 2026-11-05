@@ -1,0 +1,11 @@
+{
+  "coefficients": [
+    10.773675904500946,
+    0.0,
+    0.08253509274081412,
+    0.04216812751143459,
+    0.0
+  ],
+  "decode_horizon": 16,
+  "enable_reservations": false
+}

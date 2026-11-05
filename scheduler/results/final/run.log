@@ -1,0 +1,1963 @@
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/calibration", "--modes", "native", "--kind", "mixed", "--seeds", "61", "--count", "64", "--rate", "8", "--max-model-len", "2048"]
+READY native
+{
+  "statuses": {
+    "completed": 64
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 10.002025865018368,
+  "total_arrivals": 64,
+  "completed": 64,
+  "slo_pass": 64,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 6.398703708999304,
+  "output_tokens_s": 1100.5770379478802,
+  "ttft_p50_ms": 64.4146571867168,
+  "ttft_p95_ms": 116.10918450169258,
+  "tpot_p95_ms": 16.91319142416941,
+  "arrival_lag_p95_ms": 3.7018989031449827
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/calibration/native.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/calibration/native.trace.jsonl", "steps": 686, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+STAGE_COMPLETE calibration
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/fit_cost.py", "/root/autodl-tmp/turbollm-v2/results/final/calibration/native.trace.jsonl", "--output", "/root/autodl-tmp/turbollm-v2/results/final/calibrated.json"]
+{
+  "features": [
+    "intercept",
+    "decode_requests",
+    "decode_context_1k",
+    "prefill_tokens",
+    "prefill_attention_1m"
+  ],
+  "train_samples": 326,
+  "held_out_samples": 326,
+  "held_out_mae_ms": 0.9585940340237743,
+  "held_out_p95_abs_error_ms": 2.0056217595596246,
+  "held_out_median_relative_error": 0.029833227639677017,
+  "rank": 5,
+  "coefficients": [
+    10.399183563605852,
+    0.0,
+    0.10184102086167074,
+    0.040000157685720614,
+    0.0
+  ],
+  "warning": "Alternate steps are a diagnostic holdout, not independent workload generalization."
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/tuning", "--modes", "tuned-128-0,tuned-256-0.05,tuned-512-0.1,budget-h16,budget-h64,budget-h128", "--kind", "mixed", "--seeds", "62", "--count", "32", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/calibrated.json", "--kv-blocks", "256"]
+READY tuned-128-0
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 13.54778285883367,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.28125,
+  "goodput_requests_s": 0.6643153417632212,
+  "output_tokens_s": 406.2657378960855,
+  "ttft_p50_ms": 2762.443079613149,
+  "ttft_p95_ms": 6473.817191366106,
+  "tpot_p95_ms": 23.06754761228822,
+  "arrival_lag_p95_ms": 1.1841880793981074
+}
+READY tuned-256-0.05
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 13.292426123283803,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.3125,
+  "goodput_requests_s": 0.752308111946803,
+  "output_tokens_s": 414.07038481552036,
+  "ttft_p50_ms": 2723.776245955378,
+  "ttft_p95_ms": 6289.440978458151,
+  "tpot_p95_ms": 22.592449853724734,
+  "arrival_lag_p95_ms": 1.999057040153429
+}
+READY tuned-512-0.1
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 13.350707121193409,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.21875,
+  "goodput_requests_s": 0.5243167973393663,
+  "output_tokens_s": 412.2628075079818,
+  "ttft_p50_ms": 2982.367137912661,
+  "ttft_p95_ms": 6386.771822255105,
+  "tpot_p95_ms": 22.7931103922104,
+  "arrival_lag_p95_ms": 1.6437916042398635
+}
+READY budget-h16
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 13.403429958038032,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.28125,
+  "goodput_requests_s": 0.6714699168926311,
+  "output_tokens_s": 410.64115806411576,
+  "ttft_p50_ms": 2746.629093773663,
+  "ttft_p95_ms": 7479.217138327658,
+  "tpot_p95_ms": 16.917160718756563,
+  "arrival_lag_p95_ms": 1.4407573184453515
+}
+READY budget-h64
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 13.33779377490282,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.25,
+  "goodput_requests_s": 0.5997993472543617,
+  "output_tokens_s": 412.6619509110008,
+  "ttft_p50_ms": 2939.302892424166,
+  "ttft_p95_ms": 7173.717576265335,
+  "tpot_p95_ms": 15.409809087703783,
+  "arrival_lag_p95_ms": 1.7009255379270445
+}
+READY budget-h128
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 14.82342114020139,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.25,
+  "goodput_requests_s": 0.5396864815709683,
+  "output_tokens_s": 371.3042993208262,
+  "ttft_p50_ms": 3819.1666323691607,
+  "ttft_p95_ms": 8569.26337131299,
+  "tpot_p95_ms": 15.571630915157556,
+  "arrival_lag_p95_ms": 1.3822130171823737
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-128-0.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-256-0.05.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-512-0.1.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h16.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h64.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h128.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-128-0.trace.jsonl", "steps": 1042, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-256-0.05.trace.jsonl", "steps": 1034, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/tuned-512-0.1.trace.jsonl", "steps": 1056, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h16.trace.jsonl", "steps": 986, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h64.trace.jsonl", "steps": 971, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/tuning/budget-h128.trace.jsonl", "steps": 1073, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE tuning
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/mixed", "--modes", "native,tuned-256-0.05,budget", "--kind", "mixed", "--seeds", "63,64,65", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.902669364586473,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.391641319505478,
+  "output_tokens_s": 920.1734518622682,
+  "ttft_p50_ms": 66.74198480322957,
+  "ttft_p95_ms": 105.56799527257681,
+  "tpot_p95_ms": 17.308432935539077,
+  "arrival_lag_p95_ms": 4.219661557925503
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.731813912279904,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.497139595759783,
+  "output_tokens_s": 938.1784910096696,
+  "ttft_p50_ms": 60.48616440966725,
+  "ttft_p95_ms": 87.31780909001827,
+  "tpot_p95_ms": 17.05693531722769,
+  "arrival_lag_p95_ms": 2.821946071454939
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.309228629805148,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.156173718445316,
+  "output_tokens_s": 879.9869812813339,
+  "ttft_p50_ms": 60.17868220806122,
+  "ttft_p95_ms": 82.47756212949753,
+  "tpot_p95_ms": 15.971436507002576,
+  "arrival_lag_p95_ms": 1.8480880222657599
+}
+READY tuned-256-0.05
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.720894829370081,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.504022343939571,
+  "output_tokens_s": 939.3531466990202,
+  "ttft_p50_ms": 81.72070002183318,
+  "ttft_p95_ms": 140.65417018719018,
+  "tpot_p95_ms": 16.585552112720027,
+  "arrival_lag_p95_ms": 4.885011278404438
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.728748065419495,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.499070386755763,
+  "output_tokens_s": 938.5080126729836,
+  "ttft_p50_ms": 72.49659718945622,
+  "ttft_p95_ms": 130.17031881026924,
+  "tpot_p95_ms": 16.74317892193501,
+  "arrival_lag_p95_ms": 4.183366673680355
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.337518873624504,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.140551858543987,
+  "output_tokens_s": 877.3208505248405,
+  "ttft_p50_ms": 75.22707711905241,
+  "ttft_p95_ms": 123.84766829200089,
+  "tpot_p95_ms": 15.770883176211766,
+  "arrival_lag_p95_ms": 3.1826697636236463
+}
+READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.034691017121077,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.31285462989694,
+  "output_tokens_s": 906.7271901690776,
+  "ttft_p50_ms": 71.46256184205413,
+  "ttft_p95_ms": 116.67371122166514,
+  "tpot_p95_ms": 17.859007194491586,
+  "arrival_lag_p95_ms": 5.40648808430999
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.862207955680788,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.416257465413164,
+  "output_tokens_s": 924.3746074305133,
+  "ttft_p50_ms": 64.08383045345545,
+  "ttft_p95_ms": 104.65169087983668,
+  "tpot_p95_ms": 17.53106647809073,
+  "arrival_lag_p95_ms": 4.2928024007311985
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.433553144335747,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 5.088220659340958,
+  "output_tokens_s": 868.3896591941901,
+  "ttft_p50_ms": 59.80860395357013,
+  "ttft_p95_ms": 98.97005786187947,
+  "tpot_p95_ms": 16.4395649261098,
+  "arrival_lag_p95_ms": 4.493156931098907
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/mixed/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/mixed/tuned-256-0.05.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/mixed/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/mixed/native.trace.jsonl", "steps": 1945, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/mixed/tuned-256-0.05.trace.jsonl", "steps": 1950, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/mixed/budget.trace.jsonl", "steps": 1911, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+STAGE_COMPLETE mixed
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/pressure", "--modes", "native,tuned-256-0.05,budget", "--kind", "mixed", "--seeds", "63,64,65", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--kv-blocks", "256"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.6832906762138,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.42819009448828066,
+  "output_tokens_s": 438.4666567559994,
+  "ttft_p50_ms": 4953.259721864015,
+  "ttft_p95_ms": 9903.198132524267,
+  "tpot_p95_ms": 15.30386956562618,
+  "arrival_lag_p95_ms": 1.7552721714377826
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.495040570385754,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+  "goodput_requests_s": 0.378479840223135,
+  "output_tokens_s": 442.9295501582746,
+  "ttft_p50_ms": 4656.182581558824,
+  "ttft_p95_ms": 9962.987357424572,
+  "tpot_p95_ms": 14.763062024927315,
+  "arrival_lag_p95_ms": 1.717767069685583
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.457506383769214,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.20833333333333334,
+  "goodput_requests_s": 0.541784994791799,
+  "output_tokens_s": 443.8302677334417,
+  "ttft_p50_ms": 4077.417176682502,
+  "ttft_p95_ms": 9319.788097776473,
+  "tpot_p95_ms": 17.892588418817112,
+  "arrival_lag_p95_ms": 1.876376905479171
+}
+READY tuned-256-0.05
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.6741646444425,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.20833333333333334,
+  "goodput_requests_s": 0.5354991878030827,
+  "output_tokens_s": 438.6809346482853,
+  "ttft_p50_ms": 4751.157485414296,
+  "ttft_p95_ms": 9974.364207871258,
+  "tpot_p95_ms": 20.270479337759603,
+  "arrival_lag_p95_ms": 2.034666864884316
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.247977103106678,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+  "goodput_requests_s": 0.3636745805807396,
+  "output_tokens_s": 425.6031663024884,
+  "ttft_p50_ms": 4436.77793815732,
+  "ttft_p95_ms": 9909.544376842678,
+  "tpot_p95_ms": 21.49338425599097,
+  "arrival_lag_p95_ms": 1.541212189927288
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.794842274859548,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.47885477666597,
+  "output_tokens_s": 435.86425893862514,
+  "ttft_p50_ms": 4746.219450142235,
+  "ttft_p95_ms": 9628.76849938184,
+  "tpot_p95_ms": 24.12992559270713,
+  "arrival_lag_p95_ms": 1.194125419578329
+}
+READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 21.13059734366834,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.42592264920976297,
+  "output_tokens_s": 387.68426025848646,
+  "ttft_p50_ms": 5708.525794092566,
+  "ttft_p95_ms": 11956.448479555545,
+  "tpot_p95_ms": 21.092803752797796,
+  "arrival_lag_p95_ms": 1.6316581078595682
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.715472642332315,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.3861847681742923,
+  "output_tokens_s": 395.45320261047533,
+  "ttft_p50_ms": 5221.301182638854,
+  "ttft_p95_ms": 12569.090243568644,
+  "tpot_p95_ms": 22.00833704866243,
+  "arrival_lag_p95_ms": 1.6544520661043056
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.343000197783113,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.3932556615160336,
+  "output_tokens_s": 402.6937973924184,
+  "ttft_p50_ms": 5688.125716987997,
+  "ttft_p95_ms": 11287.174886278808,
+  "tpot_p95_ms": 19.235840035734448,
+  "arrival_lag_p95_ms": 1.4374961857579303
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/pressure/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/pressure/tuned-256-0.05.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/pressure/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/pressure/native.trace.jsonl", "steps": 4268, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/pressure/tuned-256-0.05.trace.jsonl", "steps": 4371, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/pressure/budget.trace.jsonl", "steps": 4283, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE pressure
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/ablation", "--modes", "no_reserve,no_time", "--kind", "mixed", "--seeds", "63,64,65", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--kv-blocks", "256"]
+READY no_reserve
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.77641736343503,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.38505194904677903,
+  "output_tokens_s": 394.2931958239017,
+  "ttft_p50_ms": 6099.680996034294,
+  "ttft_p95_ms": 11964.131870493293,
+  "tpot_p95_ms": 17.48674781429953,
+  "arrival_lag_p95_ms": 1.2615345806252343
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.630408299155533,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+  "goodput_requests_s": 0.3393049666538365,
+  "output_tokens_s": 397.0837552611755,
+  "ttft_p50_ms": 5665.773462038487,
+  "ttft_p95_ms": 12021.558761643246,
+  "tpot_p95_ms": 16.956983023248778,
+  "arrival_lag_p95_ms": 1.253487187530089
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.57768723089248,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.3887706091668996,
+  "output_tokens_s": 398.1011037869052,
+  "ttft_p50_ms": 5183.5245015099645,
+  "ttft_p95_ms": 11454.84286043793,
+  "tpot_p95_ms": 20.12308890492895,
+  "arrival_lag_p95_ms": 1.3203354397455231
+}
+READY no_time
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.24018576554954,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.4677709513654969,
+  "output_tokens_s": 425.77551484290564,
+  "ttft_p50_ms": 5352.8761845082045,
+  "ttft_p95_ms": 10509.29590431042,
+  "tpot_p95_ms": 17.514013941388967,
+  "arrival_lag_p95_ms": 1.8731660934296899
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.409135952591896,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.412177029391753,
+  "output_tokens_s": 422.06927809715506,
+  "ttft_p50_ms": 4903.784116264433,
+  "ttft_p95_ms": 10994.886913010849,
+  "tpot_p95_ms": 19.28789509849855,
+  "arrival_lag_p95_ms": 1.4994703825330187
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.68199541606009,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.20833333333333334,
+  "goodput_requests_s": 0.5080785656438174,
+  "output_tokens_s": 416.2179609754152,
+  "ttft_p50_ms": 5271.05550840497,
+  "ttft_p95_ms": 10497.311913082374,
+  "tpot_p95_ms": 20.83502524208708,
+  "arrival_lag_p95_ms": 1.876345505618282
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/ablation/no_reserve.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/ablation/no_time.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/ablation/no_reserve.trace.jsonl", "steps": 4283, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/ablation/no_time.trace.jsonl", "steps": 4135, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE ablation
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/burst", "--modes", "native,budget", "--kind", "burst", "--seeds", "63,64,65", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--kv-blocks", "256"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.177665570750833,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.44010051614507495,
+  "output_tokens_s": 450.66292853255675,
+  "ttft_p50_ms": 6712.0328596793115,
+  "ttft_p95_ms": 11916.039056330917,
+  "tpot_p95_ms": 17.22620035370995,
+  "arrival_lag_p95_ms": 12.362521234899758
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.654751230031252,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.4288451720075067,
+  "output_tokens_s": 439.1374561356869,
+  "ttft_p50_ms": 5741.89478950575,
+  "ttft_p95_ms": 10879.762889118865,
+  "tpot_p95_ms": 17.878449345227533,
+  "arrival_lag_p95_ms": 14.478828478604555
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.848920869641006,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.42442748077345854,
+  "output_tokens_s": 434.61374031202155,
+  "ttft_p50_ms": 6191.2291324697435,
+  "ttft_p95_ms": 12230.398199148476,
+  "tpot_p95_ms": 18.675478817896494,
+  "arrival_lag_p95_ms": 12.328460300341247
+}
+READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.830505101010203,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.4320586541880606,
+  "output_tokens_s": 393.2693883453992,
+  "ttft_p50_ms": 6852.834713179618,
+  "ttft_p95_ms": 14068.305817432702,
+  "tpot_p95_ms": 24.89921196481198,
+  "arrival_lag_p95_ms": 13.422287628054619
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.18944488465786,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.44577748677177254,
+  "output_tokens_s": 405.7565746260401,
+  "ttft_p50_ms": 7781.792590860277,
+  "ttft_p95_ms": 14339.840468857436,
+  "tpot_p95_ms": 22.999605111496237,
+  "arrival_lag_p95_ms": 13.55052157305181
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.584980520419776,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.43721197555043734,
+  "output_tokens_s": 397.96005596768697,
+  "ttft_p50_ms": 7801.565148402005,
+  "ttft_p95_ms": 14377.26186499931,
+  "tpot_p95_ms": 25.446337238174134,
+  "arrival_lag_p95_ms": 13.634251477196813
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/burst/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/burst/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/burst/native.trace.jsonl", "steps": 4358, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/burst/budget.trace.jsonl", "steps": 4213, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE burst
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/prefix", "--modes", "native,budget", "--kind", "prefix", "--seeds", "63,64,65", "--count", "32", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json"]
+READY native
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 6.785427122376859,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.715989048717505,
+  "output_tokens_s": 811.1501163794109,
+  "ttft_p50_ms": 63.29122930765152,
+  "ttft_p95_ms": 80.46905393712223,
+  "tpot_p95_ms": 15.526785142353082,
+  "arrival_lag_p95_ms": 4.223118468830478
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.282529995776713,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.394077335562978,
+  "output_tokens_s": 755.7813017168321,
+  "ttft_p50_ms": 57.44994431734085,
+  "ttft_p95_ms": 79.11997414194047,
+  "tpot_p95_ms": 14.717909863993114,
+  "arrival_lag_p95_ms": 3.2505423265150712
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.178890559822321,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.457513279153821,
+  "output_tokens_s": 766.6922840144571,
+  "ttft_p50_ms": 59.41290408372879,
+  "ttft_p95_ms": 71.54520945623517,
+  "tpot_p95_ms": 14.80767073762405,
+  "arrival_lag_p95_ms": 3.6335705047611633
+}
+READY budget
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 6.911192582920194,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.630170497503197,
+  "output_tokens_s": 796.3893255705499,
+  "ttft_p50_ms": 61.28558795899153,
+  "ttft_p95_ms": 110.14931267127395,
+  "tpot_p95_ms": 15.788510569378616,
+  "arrival_lag_p95_ms": 2.439128489155084
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.375373100861907,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.338763553027627,
+  "output_tokens_s": 746.2673311207519,
+  "ttft_p50_ms": 55.690748151391745,
+  "ttft_p95_ms": 86.71389655210078,
+  "tpot_p95_ms": 15.022508269469217,
+  "arrival_lag_p95_ms": 2.232235054747721
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.280725751072168,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.395166236729579,
+  "output_tokens_s": 755.9685927174876,
+  "ttft_p50_ms": 57.80551675707102,
+  "ttft_p95_ms": 79.25136387348175,
+  "tpot_p95_ms": 15.14098080329773,
+  "arrival_lag_p95_ms": 2.8990514775876437
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/prefix/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/prefix/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/prefix/native.trace.jsonl", "steps": 1622, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/prefix/budget.trace.jsonl", "steps": 1612, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+STAGE_COMPLETE prefix
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/long8k", "--modes", "native,budget", "--kind", "mixed", "--seeds", "63,64,65", "--count", "24", "--rate", "4", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--long-prompt", "8192", "--max-model-len", "10240"]
+READY native
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.349503514356911,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 24,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.566981226665788,
+  "output_tokens_s": 438.09812935096113,
+  "ttft_p50_ms": 80.09038120508194,
+  "ttft_p95_ms": 530.9368774294853,
+  "tpot_p95_ms": 24.96909889847216,
+  "arrival_lag_p95_ms": 2.0038449737443282
+}
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.592932249419391,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 24,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 3.160834208923069,
+  "output_tokens_s": 539.4490383228705,
+  "ttft_p50_ms": 351.32084833458066,
+  "ttft_p95_ms": 690.6810214743016,
+  "tpot_p95_ms": 31.407381902177498,
+  "arrival_lag_p95_ms": 2.2671542797240147
+}
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.59890961367637,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 24,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.7910515493532517,
+  "output_tokens_s": 476.3394644229549,
+  "ttft_p50_ms": 206.14998694509268,
+  "ttft_p95_ms": 529.4073692522943,
+  "tpot_p95_ms": 27.870056405296825,
+  "arrival_lag_p95_ms": 4.716084343301701
+}
+READY budget
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.68747650180012,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 22,
+  "slo_pass_fraction_all_arrivals": 0.9166666666666666,
+  "goodput_requests_s": 2.270973250455057,
+  "output_tokens_s": 422.813928811996,
+  "ttft_p50_ms": 137.52233935520053,
+  "ttft_p95_ms": 1066.2201250437645,
+  "tpot_p95_ms": 27.49820952413706,
+  "arrival_lag_p95_ms": 2.105410495782855
+}
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.477803359739482,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 19,
+  "slo_pass_fraction_all_arrivals": 0.7916666666666666,
+  "goodput_requests_s": 2.2411465793403185,
+  "output_tokens_s": 483.1440204725234,
+  "ttft_p50_ms": 252.09756335243583,
+  "ttft_p95_ms": 1479.065508395433,
+  "tpot_p95_ms": 31.616117916707914,
+  "arrival_lag_p95_ms": 1.6120186604687945
+}
+{
+  "statuses": {
+    "completed": 24
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 9.167239957489073,
+  "total_arrivals": 24,
+  "completed": 24,
+  "slo_pass": 20,
+  "slo_pass_fraction_all_arrivals": 0.8333333333333334,
+  "goodput_requests_s": 2.181681737659897,
+  "output_tokens_s": 446.80841987274687,
+  "ttft_p50_ms": 136.62897842004895,
+  "ttft_p95_ms": 1187.9381127655506,
+  "tpot_p95_ms": 30.56575832155159,
+  "arrival_lag_p95_ms": 1.6045332726693615
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/long8k/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/long8k/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/long8k/native.trace.jsonl", "steps": 1363, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24138}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/long8k/budget.trace.jsonl", "steps": 1414, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24934}
+STAGE_COMPLETE long8k
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/low", "--modes", "native,budget", "--kind", "low", "--seeds", "63,64,65", "--count", "16", "--rate", "2", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json"]
+READY native
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.509909578599036,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.13051832815606,
+  "output_tokens_s": 136.35317300198784,
+  "ttft_p50_ms": 47.048098873347044,
+  "ttft_p95_ms": 55.30813708901405,
+  "tpot_p95_ms": 12.378525277156205,
+  "arrival_lag_p95_ms": 1.69654489071569
+}
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.257466212846339,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 1.9376403835729192,
+  "output_tokens_s": 124.00898454866683,
+  "ttft_p50_ms": 44.34708645567298,
+  "ttft_p95_ms": 49.19818532653153,
+  "tpot_p95_ms": 11.753821937692544,
+  "arrival_lag_p95_ms": 1.8528647464503556
+}
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 6.766045463271439,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.364749111848839,
+  "output_tokens_s": 151.3439431583257,
+  "ttft_p50_ms": 44.69902068376541,
+  "ttft_p95_ms": 53.73975052498281,
+  "tpot_p95_ms": 12.657486974069524,
+  "arrival_lag_p95_ms": 1.3384850324751896
+}
+READY budget
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.530686667189002,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.124640249568684,
+  "output_tokens_s": 135.97697597239576,
+  "ttft_p50_ms": 48.197783064097166,
+  "ttft_p95_ms": 56.466632056981325,
+  "tpot_p95_ms": 12.827164412195247,
+  "arrival_lag_p95_ms": 1.4558307685901273
+}
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 8.290505856275558,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 1.9299184244455583,
+  "output_tokens_s": 123.51477916451573,
+  "ttft_p50_ms": 45.01939145848155,
+  "ttft_p95_ms": 52.158123813569546,
+  "tpot_p95_ms": 12.322551463656719,
+  "arrival_lag_p95_ms": 1.2729979764357635
+}
+{
+  "statuses": {
+    "completed": 16
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 6.761706734076142,
+  "total_arrivals": 16,
+  "completed": 16,
+  "slo_pass": 16,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 2.3662664811188523,
+  "output_tokens_s": 151.44105479160655,
+  "ttft_p50_ms": 46.136022079735994,
+  "ttft_p95_ms": 58.11845068819821,
+  "tpot_p95_ms": 12.833515422359582,
+  "arrival_lag_p95_ms": 1.736933102627125
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/low/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/low/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/low/native.trace.jsonl", "steps": 1744, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/low/budget.trace.jsonl", "steps": 1725, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+STAGE_COMPLETE low
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/cancel", "--modes", "budget", "--kind", "cancel", "--seeds", "91", "--count", "16", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json"]
+READY budget
+{
+  "statuses": {
+    "cancelled": 6,
+    "completed": 10
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 3.040501769632101,
+  "total_arrivals": 16,
+  "completed": 10,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.625,
+  "goodput_requests_s": 3.288930827101605,
+  "output_tokens_s": 420.98314586900545,
+  "ttft_p50_ms": 55.15077197924256,
+  "ttft_p95_ms": 96.99461720883846,
+  "tpot_p95_ms": 14.664154919964357,
+  "arrival_lag_p95_ms": 1.2108881781913439
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/cancel/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/cancel/budget.trace.jsonl", "steps": 238, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 24917}
+STAGE_COMPLETE cancel
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead", "--modes", "native,tuned-256-0.05,budget", "--kind", "mixed", "--seeds", "66", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--kv-blocks", "256"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.0806450182572,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.44246209092219224,
+  "output_tokens_s": 453.08118110432486,
+  "ttft_p50_ms": 4804.475233890116,
+  "ttft_p95_ms": 10151.96174196899,
+  "tpot_p95_ms": 17.64958278486102,
+  "arrival_lag_p95_ms": 1.8534842619991103
+}
+READY tuned-256-0.05
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.802736970596015,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+  "goodput_requests_s": 0.37228622678425477,
+  "output_tokens_s": 435.681252830945,
+  "ttft_p50_ms": 5643.832544796169,
+  "ttft_p95_ms": 10654.044040152803,
+  "tpot_p95_ms": 21.372431440014886,
+  "arrival_lag_p95_ms": 1.928021320346196
+}
+READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.96673746034503,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.400666359032787,
+  "output_tokens_s": 410.2823516495739,
+  "ttft_p50_ms": 6377.0622429437935,
+  "ttft_p95_ms": 12660.170426173136,
+  "tpot_p95_ms": 19.967876950748206,
+  "arrival_lag_p95_ms": 1.729922102247372
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/tuned-256-0.05.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/native.trace.jsonl", "steps": 1408, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/tuned-256-0.05.trace.jsonl", "steps": 1418, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/trace-overhead/budget.trace.jsonl", "steps": 1358, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE trace-overhead
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-3B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/no-trace", "--modes", "native,tuned-256-0.05,budget", "--kind", "mixed", "--seeds", "66", "--count", "48", "--rate", "8", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/frozen-policy.json", "--kv-blocks", "256", "--no-trace"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.35916665289551,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.43574962585452004,
+  "output_tokens_s": 446.2076168750285,
+  "ttft_p50_ms": 5053.395549766719,
+  "ttft_p95_ms": 10465.943222912028,
+  "tpot_p95_ms": 17.889646921384205,
+  "arrival_lag_p95_ms": 2.0046753484145086
+}
+READY tuned-256-0.05
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 17.798939337022603,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+  "goodput_requests_s": 0.39328186177025065,
+  "output_tokens_s": 460.25214451741334,
+  "ttft_p50_ms": 5005.473805591464,
+  "ttft_p95_ms": 9758.417372126132,
+  "tpot_p95_ms": 20.473203080244303,
+  "arrival_lag_p95_ms": 1.9294453459259047
+}
+READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.023255564272404,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.3995354289076967,
+  "output_tokens_s": 409.12427920148144,
+  "ttft_p50_ms": 6449.839126318693,
+  "ttft_p95_ms": 12294.942780490963,
+  "tpot_p95_ms": 20.2936158159002,
+  "arrival_lag_p95_ms": 1.7236814052788985
+}
+STAGE_COMPLETE no-trace
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-7B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/7b-calibration", "--modes", "native", "--kind", "mixed", "--seeds", "61", "--count", "48", "--rate", "4", "--max-model-len", "2048"]
+READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 14.605151583440602,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 48,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 3.286511593239652,
+  "output_tokens_s": 560.8979785795673,
+  "ttft_p50_ms": 81.24413201585412,
+  "ttft_p95_ms": 151.06386141851544,
+  "tpot_p95_ms": 27.63722316546733,
+  "arrival_lag_p95_ms": 2.7781959084016914
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/7b-calibration/native.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/7b-calibration/native.trace.jsonl", "steps": 606, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 5179}
+STAGE_COMPLETE 7b-calibration
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/fit_cost.py", "/root/autodl-tmp/turbollm-v2/results/final/7b-calibration/native.trace.jsonl", "--output", "/root/autodl-tmp/turbollm-v2/results/final/calibrated7b.json"]
+{
+  "features": [
+    "intercept",
+    "decode_requests",
+    "decode_context_1k",
+    "prefill_tokens",
+    "prefill_attention_1m"
+  ],
+  "train_samples": 286,
+  "held_out_samples": 286,
+  "held_out_mae_ms": 0.8904891645663032,
+  "held_out_p95_abs_error_ms": 2.0974654147823406,
+  "held_out_median_relative_error": 0.034142289925878616,
+  "rank": 5,
+  "coefficients": [
+    17.91941390153587,
+    0.0,
+    0.2678922612936556,
+    0.07628296609220944,
+    13.055410583163011
+  ],
+  "warning": "Alternate steps are a diagnostic holdout, not independent workload generalization."
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/run_matrix.py", "--model", "/root/autodl-tmp/models/Qwen2.5-7B-Instruct", "--output", "/root/autodl-tmp/turbollm-v2/results/final/7b-pressure", "--modes", "native,budget", "--kind", "mixed", "--seeds", "63,64,65", "--count", "32", "--rate", "4", "--max-model-len", "2048", "--config", "/root/autodl-tmp/turbollm-v2/results/final/calibrated7b.json", "--kv-blocks", "256"]
+READY native
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 21.7568586319685,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.25,
+  "goodput_requests_s": 0.3677001416116745,
+  "output_tokens_s": 252.97769742883207,
+  "ttft_p50_ms": 3736.1701275222003,
+  "ttft_p95_ms": 9290.019846102223,
+  "tpot_p95_ms": 23.8061697489956,
+  "arrival_lag_p95_ms": 1.9766147470454907
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 21.668765678070486,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.21875,
+  "goodput_requests_s": 0.32304562724051394,
+  "output_tokens_s": 254.0061617616841,
+  "ttft_p50_ms": 4039.705352857709,
+  "ttft_p95_ms": 8145.115093747154,
+  "tpot_p95_ms": 24.774273680579114,
+  "arrival_lag_p95_ms": 1.6765749700090369
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 21.17211299110204,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.25,
+  "goodput_requests_s": 0.3778555311584698,
+  "output_tokens_s": 259.9646054370272,
+  "ttft_p50_ms": 3078.2324876636267,
+  "ttft_p95_ms": 6878.530007461086,
+  "tpot_p95_ms": 27.296915230382524,
+  "arrival_lag_p95_ms": 2.0815168647187132
+}
+READY budget
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 22.76154481060803,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.28125,
+  "goodput_requests_s": 0.3954037423595935,
+  "output_tokens_s": 241.81135532746697,
+  "ttft_p50_ms": 4041.016477160156,
+  "ttft_p95_ms": 10687.792993104085,
+  "tpot_p95_ms": 27.694586282841872,
+  "arrival_lag_p95_ms": 2.069759070450461
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 22.66401773598045,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 7,
+  "slo_pass_fraction_all_arrivals": 0.21875,
+  "goodput_requests_s": 0.3088596241648316,
+  "output_tokens_s": 242.85191020046187,
+  "ttft_p50_ms": 4037.586231715977,
+  "ttft_p95_ms": 9556.931646261364,
+  "tpot_p95_ms": 29.60654758246923,
+  "arrival_lag_p95_ms": 1.5445223633328453
+}
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 21.987942634150386,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.25,
+  "goodput_requests_s": 0.36383576822575786,
+  "output_tokens_s": 250.31900853932143,
+  "ttft_p50_ms": 3314.224572852254,
+  "ttft_p95_ms": 8610.650452040136,
+  "tpot_p95_ms": 28.351204487386852,
+  "arrival_lag_p95_ms": 1.3718790076073795
+}
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/check_trace.py", "/root/autodl-tmp/turbollm-v2/results/final/7b-pressure/native.trace.jsonl", "/root/autodl-tmp/turbollm-v2/results/final/7b-pressure/budget.trace.jsonl"]
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/7b-pressure/native.trace.jsonl", "steps": 3099, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+{"file": "/root/autodl-tmp/turbollm-v2/results/final/7b-pressure/budget.trace.jsonl", "steps": 3087, "allocations_within_budget": true, "fully_drained": true, "free_blocks": 255}
+STAGE_COMPLETE 7b-pressure
+RUN ["/root/autodl-tmp/turbollm-v2/.venv/bin/python", "/root/autodl-tmp/turbollm-v2/tools/report.py", "--root", "/root/autodl-tmp/turbollm-v2/results/final"]
+[
+  {
+    "experiment": "7b-calibration",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 48,
+    "goodput_requests_s": 3.286511593239652,
+    "output_tokens_s": 560.8979785795673,
+    "ttft_p95_ms": 151.06386141851544,
+    "tpot_p95_ms": 27.63722316546733,
+    "files": [
+      "7b-calibration/native-mixed-s61.json"
+    ]
+  },
+  {
+    "experiment": "7b-pressure",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 96,
+    "arrivals": 96,
+    "slo_pass": 24,
+    "goodput_requests_s": 0.36383576822575786,
+    "output_tokens_s": 242.85191020046187,
+    "ttft_p95_ms": 9556.931646261364,
+    "tpot_p95_ms": 28.351204487386852,
+    "files": [
+      "7b-pressure/budget-mixed-s63.json",
+      "7b-pressure/budget-mixed-s64.json",
+      "7b-pressure/budget-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "7b-pressure",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 96,
+    "arrivals": 96,
+    "slo_pass": 23,
+    "goodput_requests_s": 0.3677001416116745,
+    "output_tokens_s": 254.0061617616841,
+    "ttft_p95_ms": 8145.115093747154,
+    "tpot_p95_ms": 24.774273680579114,
+    "files": [
+      "7b-pressure/native-mixed-s63.json",
+      "7b-pressure/native-mixed-s64.json",
+      "7b-pressure/native-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "ablation",
+    "kind": "mixed",
+    "mode": "no_reserve",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 23,
+    "goodput_requests_s": 0.38505194904677903,
+    "output_tokens_s": 397.0837552611755,
+    "ttft_p95_ms": 11964.131870493293,
+    "tpot_p95_ms": 17.48674781429953,
+    "files": [
+      "ablation/no_reserve-mixed-s63.json",
+      "ablation/no_reserve-mixed-s64.json",
+      "ablation/no_reserve-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "ablation",
+    "kind": "mixed",
+    "mode": "no_time",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 27,
+    "goodput_requests_s": 0.4677709513654969,
+    "output_tokens_s": 422.06927809715506,
+    "ttft_p95_ms": 10509.29590431042,
+    "tpot_p95_ms": 19.28789509849855,
+    "files": [
+      "ablation/no_time-mixed-s63.json",
+      "ablation/no_time-mixed-s64.json",
+      "ablation/no_time-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "burst",
+    "kind": "burst",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 27,
+    "goodput_requests_s": 0.43721197555043734,
+    "output_tokens_s": 397.96005596768697,
+    "ttft_p95_ms": 14339.840468857436,
+    "tpot_p95_ms": 24.89921196481198,
+    "files": [
+      "burst/budget-burst-s63.json",
+      "burst/budget-burst-s64.json",
+      "burst/budget-burst-s65.json"
+    ]
+  },
+  {
+    "experiment": "burst",
+    "kind": "burst",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 24,
+    "goodput_requests_s": 0.4288451720075067,
+    "output_tokens_s": 439.1374561356869,
+    "ttft_p95_ms": 11916.039056330917,
+    "tpot_p95_ms": 17.878449345227533,
+    "files": [
+      "burst/native-burst-s63.json",
+      "burst/native-burst-s64.json",
+      "burst/native-burst-s65.json"
+    ]
+  },
+  {
+    "experiment": "calibration",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 1,
+    "completed": 64,
+    "arrivals": 64,
+    "slo_pass": 64,
+    "goodput_requests_s": 6.398703708999304,
+    "output_tokens_s": 1100.5770379478802,
+    "ttft_p95_ms": 116.10918450169258,
+    "tpot_p95_ms": 16.91319142416941,
+    "files": [
+      "calibration/native-mixed-s61.json"
+    ]
+  },
+  {
+    "experiment": "cancel",
+    "kind": "cancel",
+    "mode": "budget",
+    "replicates": 1,
+    "completed": 10,
+    "arrivals": 16,
+    "slo_pass": 10,
+    "goodput_requests_s": 3.288930827101605,
+    "output_tokens_s": 420.98314586900545,
+    "ttft_p95_ms": 96.99461720883846,
+    "tpot_p95_ms": 14.664154919964357,
+    "files": [
+      "cancel/budget-cancel-s91.json"
+    ]
+  },
+  {
+    "experiment": "long8k",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 72,
+    "arrivals": 72,
+    "slo_pass": 61,
+    "goodput_requests_s": 2.2411465793403185,
+    "output_tokens_s": 446.80841987274687,
+    "ttft_p95_ms": 1187.9381127655506,
+    "tpot_p95_ms": 30.56575832155159,
+    "files": [
+      "long8k/budget-mixed-s63.json",
+      "long8k/budget-mixed-s64.json",
+      "long8k/budget-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "long8k",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 72,
+    "arrivals": 72,
+    "slo_pass": 72,
+    "goodput_requests_s": 2.7910515493532517,
+    "output_tokens_s": 476.3394644229549,
+    "ttft_p95_ms": 530.9368774294853,
+    "tpot_p95_ms": 27.870056405296825,
+    "files": [
+      "long8k/native-mixed-s63.json",
+      "long8k/native-mixed-s64.json",
+      "long8k/native-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "low",
+    "kind": "low",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 48,
+    "goodput_requests_s": 2.124640249568684,
+    "output_tokens_s": 135.97697597239576,
+    "ttft_p95_ms": 56.466632056981325,
+    "tpot_p95_ms": 12.827164412195247,
+    "files": [
+      "low/budget-low-s63.json",
+      "low/budget-low-s64.json",
+      "low/budget-low-s65.json"
+    ]
+  },
+  {
+    "experiment": "low",
+    "kind": "low",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 48,
+    "goodput_requests_s": 2.13051832815606,
+    "output_tokens_s": 136.35317300198784,
+    "ttft_p95_ms": 53.73975052498281,
+    "tpot_p95_ms": 12.378525277156205,
+    "files": [
+      "low/native-low-s63.json",
+      "low/native-low-s64.json",
+      "low/native-low-s65.json"
+    ]
+  },
+  {
+    "experiment": "mixed",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 144,
+    "goodput_requests_s": 5.31285462989694,
+    "output_tokens_s": 906.7271901690776,
+    "ttft_p95_ms": 104.65169087983668,
+    "tpot_p95_ms": 17.53106647809073,
+    "files": [
+      "mixed/budget-mixed-s63.json",
+      "mixed/budget-mixed-s64.json",
+      "mixed/budget-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "mixed",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 144,
+    "goodput_requests_s": 5.391641319505478,
+    "output_tokens_s": 920.1734518622682,
+    "ttft_p95_ms": 87.31780909001827,
+    "tpot_p95_ms": 17.05693531722769,
+    "files": [
+      "mixed/native-mixed-s63.json",
+      "mixed/native-mixed-s64.json",
+      "mixed/native-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "mixed",
+    "kind": "mixed",
+    "mode": "tuned-256-0.05",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 144,
+    "goodput_requests_s": 5.499070386755763,
+    "output_tokens_s": 938.5080126729836,
+    "ttft_p95_ms": 130.17031881026924,
+    "tpot_p95_ms": 16.585552112720027,
+    "files": [
+      "mixed/tuned-256-0.05-mixed-s63.json",
+      "mixed/tuned-256-0.05-mixed-s64.json",
+      "mixed/tuned-256-0.05-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "no-trace",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.3995354289076967,
+    "output_tokens_s": 409.12427920148144,
+    "ttft_p95_ms": 12294.942780490963,
+    "tpot_p95_ms": 20.2936158159002,
+    "files": [
+      "no-trace/budget-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "no-trace",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.43574962585452004,
+    "output_tokens_s": 446.2076168750285,
+    "ttft_p95_ms": 10465.943222912028,
+    "tpot_p95_ms": 17.889646921384205,
+    "files": [
+      "no-trace/native-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "no-trace",
+    "kind": "mixed",
+    "mode": "tuned-256-0.05",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 7,
+    "goodput_requests_s": 0.39328186177025065,
+    "output_tokens_s": 460.25214451741334,
+    "ttft_p95_ms": 9758.417372126132,
+    "tpot_p95_ms": 20.473203080244303,
+    "files": [
+      "no-trace/tuned-256-0.05-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "prefix",
+    "kind": "prefix",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 96,
+    "arrivals": 96,
+    "slo_pass": 96,
+    "goodput_requests_s": 4.395166236729579,
+    "output_tokens_s": 755.9685927174876,
+    "ttft_p95_ms": 86.71389655210078,
+    "tpot_p95_ms": 15.14098080329773,
+    "files": [
+      "prefix/budget-prefix-s63.json",
+      "prefix/budget-prefix-s64.json",
+      "prefix/budget-prefix-s65.json"
+    ]
+  },
+  {
+    "experiment": "prefix",
+    "kind": "prefix",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 96,
+    "arrivals": 96,
+    "slo_pass": 96,
+    "goodput_requests_s": 4.457513279153821,
+    "output_tokens_s": 766.6922840144571,
+    "ttft_p95_ms": 79.11997414194047,
+    "tpot_p95_ms": 14.80767073762405,
+    "files": [
+      "prefix/native-prefix-s63.json",
+      "prefix/native-prefix-s64.json",
+      "prefix/native-prefix-s65.json"
+    ]
+  },
+  {
+    "experiment": "pressure",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 25,
+    "goodput_requests_s": 0.3932556615160336,
+    "output_tokens_s": 395.45320261047533,
+    "ttft_p95_ms": 11956.448479555545,
+    "tpot_p95_ms": 21.092803752797796,
+    "files": [
+      "pressure/budget-mixed-s63.json",
+      "pressure/budget-mixed-s64.json",
+      "pressure/budget-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "pressure",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 25,
+    "goodput_requests_s": 0.42819009448828066,
+    "output_tokens_s": 442.9295501582746,
+    "ttft_p95_ms": 9903.198132524267,
+    "tpot_p95_ms": 15.30386956562618,
+    "files": [
+      "pressure/native-mixed-s63.json",
+      "pressure/native-mixed-s64.json",
+      "pressure/native-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "pressure",
+    "kind": "mixed",
+    "mode": "tuned-256-0.05",
+    "replicates": 3,
+    "completed": 144,
+    "arrivals": 144,
+    "slo_pass": 26,
+    "goodput_requests_s": 0.47885477666597,
+    "output_tokens_s": 435.86425893862514,
+    "ttft_p95_ms": 9909.544376842678,
+    "tpot_p95_ms": 21.49338425599097,
+    "files": [
+      "pressure/tuned-256-0.05-mixed-s63.json",
+      "pressure/tuned-256-0.05-mixed-s64.json",
+      "pressure/tuned-256-0.05-mixed-s65.json"
+    ]
+  },
+  {
+    "experiment": "trace-overhead",
+    "kind": "mixed",
+    "mode": "budget",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.400666359032787,
+    "output_tokens_s": 410.2823516495739,
+    "ttft_p95_ms": 12660.170426173136,
+    "tpot_p95_ms": 19.967876950748206,
+    "files": [
+      "trace-overhead/budget-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "trace-overhead",
+    "kind": "mixed",
+    "mode": "native",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.44246209092219224,
+    "output_tokens_s": 453.08118110432486,
+    "ttft_p95_ms": 10151.96174196899,
+    "tpot_p95_ms": 17.64958278486102,
+    "files": [
+      "trace-overhead/native-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "trace-overhead",
+    "kind": "mixed",
+    "mode": "tuned-256-0.05",
+    "replicates": 1,
+    "completed": 48,
+    "arrivals": 48,
+    "slo_pass": 7,
+    "goodput_requests_s": 0.37228622678425477,
+    "output_tokens_s": 435.681252830945,
+    "ttft_p95_ms": 10654.044040152803,
+    "tpot_p95_ms": 21.372431440014886,
+    "files": [
+      "trace-overhead/tuned-256-0.05-mixed-s66.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "budget-h128",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.5396864815709683,
+    "output_tokens_s": 371.3042993208262,
+    "ttft_p95_ms": 8569.26337131299,
+    "tpot_p95_ms": 15.571630915157556,
+    "files": [
+      "tuning/budget-h128-mixed-s62.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "budget-h16",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 9,
+    "goodput_requests_s": 0.6714699168926311,
+    "output_tokens_s": 410.64115806411576,
+    "ttft_p95_ms": 7479.217138327658,
+    "tpot_p95_ms": 16.917160718756563,
+    "files": [
+      "tuning/budget-h16-mixed-s62.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "budget-h64",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 8,
+    "goodput_requests_s": 0.5997993472543617,
+    "output_tokens_s": 412.6619509110008,
+    "ttft_p95_ms": 7173.717576265335,
+    "tpot_p95_ms": 15.409809087703783,
+    "files": [
+      "tuning/budget-h64-mixed-s62.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "tuned-128-0",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 9,
+    "goodput_requests_s": 0.6643153417632212,
+    "output_tokens_s": 406.2657378960855,
+    "ttft_p95_ms": 6473.817191366106,
+    "tpot_p95_ms": 23.06754761228822,
+    "files": [
+      "tuning/tuned-128-0-mixed-s62.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "tuned-256-0.05",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 10,
+    "goodput_requests_s": 0.752308111946803,
+    "output_tokens_s": 414.07038481552036,
+    "ttft_p95_ms": 6289.440978458151,
+    "tpot_p95_ms": 22.592449853724734,
+    "files": [
+      "tuning/tuned-256-0.05-mixed-s62.json"
+    ]
+  },
+  {
+    "experiment": "tuning",
+    "kind": "mixed",
+    "mode": "tuned-512-0.1",
+    "replicates": 1,
+    "completed": 32,
+    "arrivals": 32,
+    "slo_pass": 7,
+    "goodput_requests_s": 0.5243167973393663,
+    "output_tokens_s": 412.2628075079818,
+    "ttft_p95_ms": 6386.771822255105,
+    "tpot_p95_ms": 22.7931103922104,
+    "files": [
+      "tuning/tuned-512-0.1-mixed-s62.json"
+    ]
+  }
+]
+VALIDATION_COMPLETE

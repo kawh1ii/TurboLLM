@@ -1,0 +1,47 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -720,6 +720,13 @@
+                 - self.num_sampled_tokens_per_step,
+             )
+ 
++            # TurboLLM extension: per-request quotas; native owns allocation.
++            if hasattr(self, "_turbollm_cap"):
++                num_new_tokens = self._turbollm_cap(request, num_new_tokens)
++                if num_new_tokens == 0:
++                    req_index += 1
++                    continue
++
+             # Apply Mamba alignment before encoder caps.
+             if self.need_mamba_block_aligned_split:
+                 num_new_tokens = self._mamba_block_aligned_split(
+@@ -1169,6 +1176,13 @@
+                     num_new_tokens = min(num_new_tokens, request_token_budget)
+                     assert num_new_tokens > 0
+ 
++                    # TurboLLM extension: skip without losing queue ownership.
++                    if hasattr(self, "_turbollm_cap"):
++                        num_new_tokens = self._turbollm_cap(request, num_new_tokens)
++                        if num_new_tokens == 0:
++                            skip_request(request_queue)
++                            continue
++
+                     # Apply Mamba alignment before encoder caps.
+                     if self.need_mamba_block_aligned_split:
+                         num_new_tokens = self._mamba_block_aligned_split(
+@@ -1253,6 +1267,16 @@
+                 # Replayed tokens are already counted in the adopted hit; a
+                 # chunk that ends inside the replayed range needs no new slots.
+                 num_tokens_past_hit = max(num_new_tokens - num_replay_tokens, 0)
++                # TurboLLM extension: exact prefix-hit-aware admission demand.
++                if hasattr(self, "_turbollm_admit") and not self._turbollm_admit(
++                    request, num_new_local_computed_tokens, new_computed_blocks
++                ):
++                    skip_request(request_queue)
++                    continue
++                if hasattr(self, "_turbollm_reserved_blocks"):
++                    reserved_blocks = max(
++                        reserved_blocks, self._turbollm_reserved_blocks(request)
++                    )
+                 new_blocks = self.kv_cache_manager.allocate_slots(
+                     request,
+                     num_tokens_past_hit,

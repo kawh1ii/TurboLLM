@@ -1,0 +1,36 @@
+{
+  "seed": 62,
+  "objective": [
+    "goodput",
+    "output_throughput"
+  ],
+  "candidates": {
+    "tuned-128-0": {
+      "goodput": 0.6643153417632212,
+      "output_throughput": 406.2657378960855
+    },
+    "tuned-256-0.05": {
+      "goodput": 0.752308111946803,
+      "output_throughput": 414.07038481552036
+    },
+    "tuned-512-0.1": {
+      "goodput": 0.5243167973393663,
+      "output_throughput": 412.2628075079818
+    },
+    "budget-h16": {
+      "goodput": 0.6714699168926311,
+      "output_throughput": 410.64115806411576
+    },
+    "budget-h64": {
+      "goodput": 0.5997993472543617,
+      "output_throughput": 412.6619509110008
+    },
+    "budget-h128": {
+      "goodput": 0.5396864815709683,
+      "output_throughput": 371.3042993208262
+    }
+  },
+  "selected_native": "tuned-256-0.05",
+  "selected_policy": "budget-h16",
+  "warning": "Finite candidate search, not a globally optimal native baseline."
+}

@@ -1,0 +1,30 @@
+{
+  "portable_sha256": "992e2cf8004dd52838e91781aa05d1927e7531548cad655587d809bd503bc99b",
+  "legacy_sha256": "2696b43fca76f0d1d0b71fac7a5a1ed6cd9d76abe42b653c184c0b46dc0cd5e0",
+  "verified_stages": 14,
+  "executable_python_files": {
+    "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+    "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+    "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf",
+    "tools/serve.py": "31e16d144075541992ebe8529a983e4305ddf4dee63566434e415021efaba4a4",
+    "tools/benchmark.py": "7e5b0e3c1159c519d2a875e3dc1733dae42839126934987abd7b17766298b172",
+    "tools/correctness.py": "5f118a2efb337afca8a2b68f6375c271d998164dc37188e792be71f74436fbf8",
+    "tools/fit_cost.py": "a3cf6dd951c971dfde3f1875e7d17fa18457d8534e98176ab5a1cccb9876583d",
+    "tools/run_matrix.py": "b6ac5bc5602a7aee4cfe334920684d8cb73bd238ce17686e61c2428f6ed2b23a"
+  },
+  "excluded_non_executable_metadata": {
+    "src/turbollm/._policy.py": {
+      "bytes": 163,
+      "sha256": "0ff54455a6845bd1cee596f4748ca52f51457f5556bdc981c36a19b1e6a46848"
+    },
+    "src/turbollm/.___init__.py": {
+      "bytes": 163,
+      "sha256": "0ff54455a6845bd1cee596f4748ca52f51457f5556bdc981c36a19b1e6a46848"
+    },
+    "src/turbollm/._vllm_scheduler.py": {
+      "bytes": 163,
+      "sha256": "0ff54455a6845bd1cee596f4748ca52f51457f5556bdc981c36a19b1e6a46848"
+    }
+  },
+  "explanation": "All executable Python files match the tested code. The historical digest also included non-executable AppleDouble sidecars; their archived bytes reproduce it exactly."
+}

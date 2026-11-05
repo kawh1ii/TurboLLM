@@ -1,0 +1,18 @@
+{
+  "statuses": {
+    "completed": 32
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 7.375373100861907,
+  "total_arrivals": 32,
+  "completed": 32,
+  "slo_pass": 32,
+  "slo_pass_fraction_all_arrivals": 1.0,
+  "goodput_requests_s": 4.338763553027627,
+  "output_tokens_s": 746.2673311207519,
+  "ttft_p50_ms": 55.690748151391745,
+  "ttft_p95_ms": 86.71389655210078,
+  "tpot_p95_ms": 15.022508269469217,
+  "arrival_lag_p95_ms": 2.232235054747721
+}

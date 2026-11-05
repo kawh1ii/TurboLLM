@@ -1,0 +1,13 @@
+The scheduler patch is derived from vLLM:
+https://github.com/vllm-project/vllm
+Tag: v0.32.0
+Commit: 5df63a7203cdb9328d824a27b682e77c7b9928be
+File: vllm/v1/core/sched/scheduler.py
+
+Original copyright: Copyright contributors to the vLLM project.
+Original license: Apache License 2.0, reproduced in UPSTREAM_LICENSE.
+
+Modifications add explicit interfaces for per-request token quotas,
+prefix-hit-aware admission, and per-request future-block reservations.
+These modifications and the separate turbollm package are not endorsed by
+the vLLM project. Model weights and the full upstream source are not bundled.

@@ -1,0 +1,170 @@
+Restored native source
+PRODUCTION_READY native
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 17.464913974516094,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.20833333333333334,
+  "goodput_requests_s": 0.5725765391453681,
+  "output_tokens_s": 469.0547008678855,
+  "ttft_p50_ms": 4383.490109350532,
+  "ttft_p95_ms": 8822.295313235372,
+  "tpot_p95_ms": 14.7890717678476,
+  "arrival_lag_p95_ms": 1.8627013846333804
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 17.40409200824797,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.45966201489906633,
+  "output_tokens_s": 470.6939032566439,
+  "ttft_p50_ms": 4039.512333460152,
+  "ttft_p95_ms": 8983.466860186309,
+  "tpot_p95_ms": 14.419138276567333,
+  "arrival_lag_p95_ms": 1.890490218388851
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 17.39218304120004,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.517473854701279,
+  "output_tokens_s": 471.01620196809756,
+  "ttft_p50_ms": 3768.0434086360037,
+  "ttft_p95_ms": 8422.809575684369,
+  "tpot_p95_ms": 16.613912912012605,
+  "arrival_lag_p95_ms": 1.3360738606340572
+}
+Source already in requested state
+PRODUCTION_READY tuned
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.05512952618301,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 11,
+  "slo_pass_fraction_all_arrivals": 0.22916666666666666,
+  "goodput_requests_s": 0.6092451446580944,
+  "output_tokens_s": 453.72147500355544,
+  "ttft_p50_ms": 4506.071663461626,
+  "ttft_p95_ms": 9502.081603882834,
+  "tpot_p95_ms": 19.54781080808813,
+  "arrival_lag_p95_ms": 1.5070323645185069
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 18.414923613891006,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.48873403923386316,
+  "output_tokens_s": 444.85658326708966,
+  "ttft_p50_ms": 3818.8295331783593,
+  "ttft_p95_ms": 9174.450084241107,
+  "tpot_p95_ms": 21.19454185947717,
+  "arrival_lag_p95_ms": 1.8358669942997783
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 17.972541064955294,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 10,
+  "slo_pass_fraction_all_arrivals": 0.20833333333333334,
+  "goodput_requests_s": 0.556404348381155,
+  "output_tokens_s": 455.8064421938422,
+  "ttft_p50_ms": 4209.643891546875,
+  "ttft_p95_ms": 8877.031457563862,
+  "tpot_p95_ms": 23.354955575260238,
+  "arrival_lag_p95_ms": 1.812877315289474
+}
+Installed three scheduling hooks
+PRODUCTION_READY budget
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 20.377388924360275,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.44166600703394804,
+  "output_tokens_s": 402.0142144024558,
+  "ttft_p50_ms": 6631.339060142636,
+  "ttft_p95_ms": 12241.255761915816,
+  "tpot_p95_ms": 18.053821063106852,
+  "arrival_lag_p95_ms": 1.745624448876848
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.631429185159504,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 8,
+  "slo_pass_fraction_all_arrivals": 0.16666666666666666,
+  "goodput_requests_s": 0.4075098111576944,
+  "output_tokens_s": 417.2900466254791,
+  "ttft_p50_ms": 5460.4778829962015,
+  "ttft_p95_ms": 11529.251960571855,
+  "tpot_p95_ms": 20.937157279220965,
+  "arrival_lag_p95_ms": 1.6622306164260081
+}
+{
+  "statuses": {
+    "completed": 48
+  },
+  "ttft_target_ms": 1000,
+  "tpot_target_ms": 40,
+  "elapsed_s": 19.4948338419199,
+  "total_arrivals": 48,
+  "completed": 48,
+  "slo_pass": 9,
+  "slo_pass_fraction_all_arrivals": 0.1875,
+  "goodput_requests_s": 0.46166076987264326,
+  "output_tokens_s": 420.21389186629926,
+  "ttft_p50_ms": 5312.495873775333,
+  "ttft_p95_ms": 10610.048967134206,
+  "tpot_p95_ms": 19.39945437168101,
+  "arrival_lag_p95_ms": 1.9295182856242874
+}
+Source already in requested state
+PRODUCTION_COMPARISON_COMPLETE
