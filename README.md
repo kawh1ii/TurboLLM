@@ -8,3 +8,5 @@
 - [源码](scheduler/src) · [测试](scheduler/tests) · [原始实验记录](scheduler/results)
 
 当前实现及其测量证据在 `scheduler/`。旧实现与实验仍可从[此前的项目说明](README.previous.md)查看。
+
+- [增量成本规划器与 CPU 决策对照](scheduler/followups/incremental-planner/README.md)

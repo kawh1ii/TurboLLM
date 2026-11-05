@@ -1,0 +1,53 @@
+--- a/src/turbollm/policy.py
++++ b/src/turbollm/policy.py
+@@ -138,11 +138,17 @@
+         # oldest prefill gets a small progress grant; deadlines are soft targets.
+         decodes = [r for r in candidates if r.decode and r.running]
+         prefills = [r for r in candidates if not r.decode]
+-        oldest = max(prefills, key=lambda r: r.age_ms, default=None)
++        # Prefill urgency is nonincreasing with age. The age tie-break above
++        # therefore puts the oldest prefill first, including equal-urgency rows.
++        oldest = prefills[0] if prefills else None
+         forced = oldest is not None and oldest.age_ms >= self.config.starvation_ms
+         grant = min(self.config.min_chunk, oldest.pending, token_budget) if forced else 0
+         for r in decodes[:max(0, token_budget - grant)]:
+             plan.quotas[r.request_id] = 1
++        # Decode features are fixed after their initial grants. Accumulate
++        # accepted prefills in quota insertion order, exactly as features().
++        _, decode_n, decode_context, _, _ = features(plan.quotas, by_id)
++        prefill_n = prefill_attention = 0.0
+         if forced and grant:
+             plan.quotas[oldest.request_id] = grant
+             plan.forced_progress = True
+@@ -155,6 +161,9 @@
+             existing = plan.quotas.get(r.request_id, 0)
+             limit = min(r.pending, self.config.max_chunk, existing + remaining)
+             if limit <= existing:
++                if existing:
++                    prefill_n += existing
++                    prefill_attention += existing * (r.computed + existing / 2) / 1e6
+                 continue
+             choices = {limit}
+             n = self.config.min_chunk
+@@ -165,10 +174,18 @@
+             for n in sorted(choices):
+                 if n <= existing:
+                     continue
+-                trial = dict(plan.quotas, **{r.request_id: n})
+-                if (not self.config.enable_time_budget or
+-                        self.cost.predict(trial, by_id) * self.config.safety <= target_ms):
++                if not self.config.enable_time_budget:
+                     best = n
++                    continue
++                trial_features = (
++                    1.0, decode_n, decode_context, prefill_n + n,
++                    prefill_attention + n * (r.computed + n / 2) / 1e6,
++                )
++                if self.cost.predict_features(trial_features) * self.config.safety <= target_ms:
++                    best = n
++            if best:
++                prefill_n += best
++                prefill_attention += best * (r.computed + best / 2) / 1e6
+             if best > existing:
+                 plan.quotas[r.request_id] = best
+                 remaining -= best - existing
