@@ -1,0 +1,199 @@
+{
+  "seeds": [
+    124,
+    125,
+    126
+  ],
+  "kv_blocks": 256,
+  "eager": false,
+  "trace": false,
+  "batch_invariant": false,
+  "vllm": "0.32.0",
+  "torch": "2.13.0",
+  "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb",
+  "source_hashes": {
+    "original": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    },
+    "incremental": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "d44e2f9c0f791905b7a8a8bbb5cf31640588622d7e0438301bd78f501efa92e0",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    }
+  },
+  "upstream_patch_state": {
+    "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+    "patched": true,
+    "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+  },
+  "policy_config": {
+    "coefficients": [
+      10.399183563605852,
+      0.0,
+      0.10184102086167074,
+      0.040000157685720614,
+      0.0
+    ],
+    "decode_horizon": 16
+  },
+  "runs": [
+    {
+      "variant": "original",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 22.12514848820865,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4067769310021331,
+        "output_tokens_s": 370.2574020854971,
+        "ttft_p50_ms": 8038.176608271897,
+        "ttft_p95_ms": 15245.697834296152,
+        "tpot_p95_ms": 24.34664152291575,
+        "arrival_lag_p95_ms": 16.360666975378987
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.314720534719527,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4430284918081083,
+        "output_tokens_s": 403.25437832133593,
+        "ttft_p50_ms": 6840.343911200762,
+        "ttft_p95_ms": 13708.681941917166,
+        "tpot_p95_ms": 21.149859563173614,
+        "arrival_lag_p95_ms": 14.354318659752607
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 125,
+      "workload_sha256": "aa0a6a5b78dd8834c539b1def1e54bdd8ffde9315c6eb08b9d2426a20c914077",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.413376534357667,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.440887375239081,
+        "output_tokens_s": 401.30548643983906,
+        "ttft_p50_ms": 6414.988915901631,
+        "ttft_p95_ms": 13153.185688005758,
+        "tpot_p95_ms": 22.444041529565382,
+        "arrival_lag_p95_ms": 15.718099661171435
+      }
+    },
+    {
+      "variant": "original",
+      "seed": 125,
+      "workload_sha256": "aa0a6a5b78dd8834c539b1def1e54bdd8ffde9315c6eb08b9d2426a20c914077",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 21.120814820751548,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.426119923704712,
+        "output_tokens_s": 387.86382388766674,
+        "ttft_p50_ms": 7937.1081702411175,
+        "ttft_p95_ms": 14777.19132215716,
+        "tpot_p95_ms": 22.715528949211446,
+        "arrival_lag_p95_ms": 13.500599237158893
+      }
+    },
+    {
+      "variant": "original",
+      "seed": 126,
+      "workload_sha256": "684c9cbe90af4a7ab2e023eb24da80cc0058ed155045b2963f97eaecaed630d7",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.88342948909849,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.430963698021829,
+        "output_tokens_s": 392.2727349105359,
+        "ttft_p50_ms": 8023.91821006313,
+        "ttft_p95_ms": 14314.686113968492,
+        "tpot_p95_ms": 25.767764637217393,
+        "arrival_lag_p95_ms": 13.814690709114075
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 126,
+      "workload_sha256": "684c9cbe90af4a7ab2e023eb24da80cc0058ed155045b2963f97eaecaed630d7",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.725361632183194,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4342505650673149,
+        "output_tokens_s": 395.26451433682706,
+        "ttft_p50_ms": 7134.7380969673395,
+        "ttft_p95_ms": 14635.526052350178,
+        "tpot_p95_ms": 19.649303818184244,
+        "arrival_lag_p95_ms": 13.617951655760407
+      }
+    }
+  ],
+  "output_comparisons": [
+    {
+      "seed": 124,
+      "identical": 26,
+      "total": 48
+    },
+    {
+      "seed": 125,
+      "identical": 30,
+      "total": 48
+    },
+    {
+      "seed": 126,
+      "identical": 29,
+      "total": 48
+    }
+  ],
+  "completed": true
+}

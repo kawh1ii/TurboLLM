@@ -1,0 +1,49 @@
+{
+  "environment": {
+    "python": "3.12.3",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "driver": "595.71.05",
+    "torch": "2.13.0+cu130",
+    "torch_distribution": "2.13.0",
+    "cuda_build": "13.0",
+    "vllm": "0.32.0",
+    "vllm_distribution": "0.32.0",
+    "model": "Qwen2.5-3B-Instruct",
+    "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb"
+  },
+  "token_id_matches": {
+    "124": 24
+  },
+  "median_of_runs": {
+    "original": {
+      "ttft_target_ms": 1000,
+      "tpot_target_ms": 40,
+      "elapsed_s": 20.569619942456484,
+      "total_arrivals": 48,
+      "completed": 48,
+      "slo_pass": 9,
+      "slo_pass_fraction_all_arrivals": 0.1875,
+      "goodput_requests_s": 0.4375384681475643,
+      "output_tokens_s": 398.257236784983,
+      "ttft_p50_ms": 7209.333774633706,
+      "ttft_p95_ms": 13976.397411199285,
+      "tpot_p95_ms": 23.885250319395322,
+      "arrival_lag_p95_ms": 13.818891765549779
+    },
+    "repeat": {
+      "ttft_target_ms": 1000,
+      "tpot_target_ms": 40,
+      "elapsed_s": 21.16591867338866,
+      "total_arrivals": 48,
+      "completed": 48,
+      "slo_pass": 9,
+      "slo_pass_fraction_all_arrivals": 0.1875,
+      "goodput_requests_s": 0.42521187664372245,
+      "output_tokens_s": 387.03729927393044,
+      "ttft_p50_ms": 7233.019242994487,
+      "ttft_p95_ms": 13789.589842082933,
+      "tpot_p95_ms": 23.495471053267167,
+      "arrival_lag_p95_ms": 13.938081357628107
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "seeds": [
+    124
+  ],
+  "kv_blocks": 256,
+  "eager": true,
+  "trace": true,
+  "batch_invariant": true,
+  "repeat_baseline": false,
+  "vllm": "0.32.0",
+  "torch": "2.13.0",
+  "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb",
+  "source_hashes": {
+    "original": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    },
+    "incremental": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "d44e2f9c0f791905b7a8a8bbb5cf31640588622d7e0438301bd78f501efa92e0",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    }
+  },
+  "upstream_patch_state": {
+    "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+    "patched": true,
+    "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+  },
+  "policy_config": {
+    "coefficients": [
+      10.399183563605852,
+      0.0,
+      0.10184102086167074,
+      0.040000157685720614,
+      0.0
+    ],
+    "decode_horizon": 16
+  },
+  "runs": [
+    {
+      "variant": "original",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 42.59262708667666,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 7,
+        "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+        "goodput_requests_s": 0.1643476929881524,
+        "output_tokens_s": 192.33375727984924,
+        "ttft_p50_ms": 15384.984974283725,
+        "ttft_p95_ms": 32204.052954073995,
+        "tpot_p95_ms": 41.281851918957244,
+        "arrival_lag_p95_ms": 17.288887640461326
+      },
+      "trace_metrics": {
+        "steps": 1499,
+        "preemptions": 12,
+        "admission_denials": 1785,
+        "recomputed_tokens": 3320,
+        "forced_steps": 1169,
+        "scheduler_p50_ms": 0.9963260963559151,
+        "scheduler_p95_ms": 1.8083948642015457,
+        "planner_p95_ms": 1.1226973496377468,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-strict-cu130/original-s124.trace.jsonl",
+        "steps": 1499,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 38.34249073173851,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 7,
+        "slo_pass_fraction_all_arrivals": 0.14583333333333334,
+        "goodput_requests_s": 0.18256508292523774,
+        "output_tokens_s": 213.6533084747925,
+        "ttft_p50_ms": 14640.303241088986,
+        "ttft_p95_ms": 28237.91320407763,
+        "tpot_p95_ms": 42.53433257686047,
+        "arrival_lag_p95_ms": 14.017580123618243
+      },
+      "trace_metrics": {
+        "steps": 1381,
+        "preemptions": 12,
+        "admission_denials": 1501,
+        "recomputed_tokens": 2910,
+        "forced_steps": 1044,
+        "scheduler_p50_ms": 0.7869843393564224,
+        "scheduler_p95_ms": 1.2598726898431778,
+        "planner_p95_ms": 0.5725668743252754,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-strict-cu130/incremental-s124.trace.jsonl",
+        "steps": 1381,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    }
+  ],
+  "output_comparisons": [
+    {
+      "seed": 124,
+      "identical": 48,
+      "total": 48
+    }
+  ],
+  "completed": true
+}

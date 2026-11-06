@@ -1,0 +1,71 @@
+{
+  "environment": {
+    "python": "3.12.3",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "driver": "595.71.05",
+    "torch": "2.13.0+cu130",
+    "torch_distribution": "2.13.0",
+    "cuda_build": "13.0",
+    "vllm": "0.32.0",
+    "vllm_distribution": "0.32.0",
+    "model": "Qwen2.5-3B-Instruct",
+    "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb"
+  },
+  "token_id_matches": {
+    "124": 28,
+    "125": 30,
+    "126": 32
+  },
+  "median_of_runs": {
+    "original": {
+      "ttft_target_ms": 1000,
+      "tpot_target_ms": 40,
+      "elapsed_s": 20.662611548788846,
+      "total_arrivals": 48,
+      "completed": 48,
+      "slo_pass": 9,
+      "slo_pass_fraction_all_arrivals": 0.1875,
+      "goodput_requests_s": 0.43556933637111045,
+      "output_tokens_s": 396.46488928357076,
+      "ttft_p50_ms": 7720.562232658267,
+      "ttft_p95_ms": 14378.526545781642,
+      "tpot_p95_ms": 25.904712190954232,
+      "arrival_lag_p95_ms": 13.465666444972157,
+      "steps": 1370,
+      "preemptions": 16,
+      "admission_denials": 2619,
+      "recomputed_tokens": 4241,
+      "forced_steps": 1087,
+      "scheduler_p50_ms": 2.3524463176727295,
+      "scheduler_p95_ms": 6.189452670514584,
+      "planner_p95_ms": 3.714713454246519,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0
+    },
+    "incremental": {
+      "ttft_target_ms": 1000,
+      "tpot_target_ms": 40,
+      "elapsed_s": 20.258504129946232,
+      "total_arrivals": 48,
+      "completed": 48,
+      "slo_pass": 9,
+      "slo_pass_fraction_all_arrivals": 0.1875,
+      "goodput_requests_s": 0.4442578752246643,
+      "output_tokens_s": 404.3733904267167,
+      "ttft_p50_ms": 7220.755918882787,
+      "ttft_p95_ms": 13862.757767969742,
+      "tpot_p95_ms": 23.58057234641604,
+      "arrival_lag_p95_ms": 14.191832533106208,
+      "steps": 1406,
+      "preemptions": 15,
+      "admission_denials": 2634,
+      "recomputed_tokens": 5382,
+      "forced_steps": 1072,
+      "scheduler_p50_ms": 1.9401991739869118,
+      "scheduler_p95_ms": 3.9342906791716805,
+      "planner_p95_ms": 1.588870910927653,
+      "free_blocks_at_end": 255,
+      "requests_at_end": 0
+    }
+  }
+}

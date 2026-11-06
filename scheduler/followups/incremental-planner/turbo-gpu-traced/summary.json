@@ -1,0 +1,319 @@
+{
+  "seeds": [
+    124,
+    125,
+    126
+  ],
+  "kv_blocks": 256,
+  "eager": false,
+  "trace": true,
+  "batch_invariant": false,
+  "vllm": "0.32.0",
+  "torch": "2.13.0",
+  "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb",
+  "source_hashes": {
+    "original": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    },
+    "incremental": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "d44e2f9c0f791905b7a8a8bbb5cf31640588622d7e0438301bd78f501efa92e0",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    }
+  },
+  "upstream_patch_state": {
+    "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+    "patched": true,
+    "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+  },
+  "policy_config": {
+    "coefficients": [
+      10.399183563605852,
+      0.0,
+      0.10184102086167074,
+      0.040000157685720614,
+      0.0
+    ],
+    "decode_horizon": 16
+  },
+  "runs": [
+    {
+      "variant": "original",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.662611548788846,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.43556933637111045,
+        "output_tokens_s": 396.46488928357076,
+        "ttft_p50_ms": 7803.095464129001,
+        "ttft_p95_ms": 14378.526545781642,
+        "tpot_p95_ms": 25.027140120308342,
+        "arrival_lag_p95_ms": 13.465666444972157
+      },
+      "trace_metrics": {
+        "steps": 1370,
+        "preemptions": 15,
+        "admission_denials": 2963,
+        "recomputed_tokens": 4241,
+        "forced_steps": 1087,
+        "scheduler_p50_ms": 2.552453428506851,
+        "scheduler_p95_ms": 6.397427804768085,
+        "planner_p95_ms": 3.805401735007762,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/original-s124.trace.jsonl",
+        "steps": 1370,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.373739724047482,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.44174511512862524,
+        "output_tokens_s": 402.08622034818865,
+        "ttft_p50_ms": 6914.609730243683,
+        "ttft_p95_ms": 14157.236906467006,
+        "tpot_p95_ms": 20.682515131470094,
+        "arrival_lag_p95_ms": 14.538907585665582
+      },
+      "trace_metrics": {
+        "steps": 1434,
+        "preemptions": 13,
+        "admission_denials": 2634,
+        "recomputed_tokens": 5382,
+        "forced_steps": 1072,
+        "scheduler_p50_ms": 1.7508231103420258,
+        "scheduler_p95_ms": 3.9342906791716805,
+        "planner_p95_ms": 1.588870910927653,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/incremental-s124.trace.jsonl",
+        "steps": 1434,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 125,
+      "workload_sha256": "aa0a6a5b78dd8834c539b1def1e54bdd8ffde9315c6eb08b9d2426a20c914077",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.258504129946232,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4442578752246643,
+        "output_tokens_s": 404.3733904267167,
+        "ttft_p50_ms": 7333.365444559604,
+        "ttft_p95_ms": 13862.757767969742,
+        "tpot_p95_ms": 25.04372533931448,
+        "arrival_lag_p95_ms": 12.913552206009626
+      },
+      "trace_metrics": {
+        "steps": 1406,
+        "preemptions": 15,
+        "admission_denials": 2648,
+        "recomputed_tokens": 5195,
+        "forced_steps": 1044,
+        "scheduler_p50_ms": 1.9401991739869118,
+        "scheduler_p95_ms": 4.0404959581792355,
+        "planner_p95_ms": 1.6364066395908594,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/incremental-s125.trace.jsonl",
+        "steps": 1406,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "original",
+      "seed": 125,
+      "workload_sha256": "aa0a6a5b78dd8834c539b1def1e54bdd8ffde9315c6eb08b9d2426a20c914077",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.83052045479417,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.43205833572577107,
+        "output_tokens_s": 393.26909847394626,
+        "ttft_p50_ms": 7720.562232658267,
+        "ttft_p95_ms": 14751.74478259869,
+        "tpot_p95_ms": 25.904712190954232,
+        "arrival_lag_p95_ms": 12.96291137114167
+      },
+      "trace_metrics": {
+        "steps": 1385,
+        "preemptions": 17,
+        "admission_denials": 2487,
+        "recomputed_tokens": 4135,
+        "forced_steps": 1117,
+        "scheduler_p50_ms": 2.3524463176727295,
+        "scheduler_p95_ms": 6.189452670514584,
+        "planner_p95_ms": 3.714713454246519,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/original-s125.trace.jsonl",
+        "steps": 1385,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "original",
+      "seed": 126,
+      "workload_sha256": "684c9cbe90af4a7ab2e023eb24da80cc0058ed155045b2963f97eaecaed630d7",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.525393350049853,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4384812435264799,
+        "output_tokens_s": 399.1153718854359,
+        "ttft_p50_ms": 7647.501510567963,
+        "ttft_p95_ms": 14205.969881638885,
+        "tpot_p95_ms": 27.605487967980654,
+        "arrival_lag_p95_ms": 13.940364960581062
+      },
+      "trace_metrics": {
+        "steps": 1365,
+        "preemptions": 16,
+        "admission_denials": 2619,
+        "recomputed_tokens": 5396,
+        "forced_steps": 1010,
+        "scheduler_p50_ms": 2.244553528726101,
+        "scheduler_p95_ms": 6.119072623550892,
+        "planner_p95_ms": 3.4609189257025714,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/original-s126.trace.jsonl",
+        "steps": 1365,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    },
+    {
+      "variant": "incremental",
+      "seed": 126,
+      "workload_sha256": "684c9cbe90af4a7ab2e023eb24da80cc0058ed155045b2963f97eaecaed630d7",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.177392883226275,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.44604375065134483,
+        "output_tokens_s": 405.99893392620186,
+        "ttft_p50_ms": 7220.755918882787,
+        "ttft_p95_ms": 13826.101075066254,
+        "tpot_p95_ms": 23.58057234641604,
+        "arrival_lag_p95_ms": 14.191832533106208
+      },
+      "trace_metrics": {
+        "steps": 1399,
+        "preemptions": 17,
+        "admission_denials": 2454,
+        "recomputed_tokens": 5506,
+        "forced_steps": 1083,
+        "scheduler_p50_ms": 1.9563408568501472,
+        "scheduler_p95_ms": 3.8547396659851056,
+        "planner_p95_ms": 1.5657896175980568,
+        "free_blocks_at_end": 255,
+        "requests_at_end": 0,
+        "ledger_at_end": {}
+      },
+      "trace_verification": {
+        "file": "turbo-gpu-traced/incremental-s126.trace.jsonl",
+        "steps": 1399,
+        "allocations_within_budget": true,
+        "fully_drained": true,
+        "free_blocks": 255
+      }
+    }
+  ],
+  "output_comparisons": [
+    {
+      "seed": 124,
+      "identical": 28,
+      "total": 48
+    },
+    {
+      "seed": 125,
+      "identical": 30,
+      "total": 48
+    },
+    {
+      "seed": 126,
+      "identical": 32,
+      "total": 48
+    }
+  ],
+  "completed": true
+}

@@ -1,0 +1,96 @@
+{
+  "seeds": [
+    124
+  ],
+  "kv_blocks": 256,
+  "eager": false,
+  "trace": false,
+  "batch_invariant": false,
+  "repeat_baseline": true,
+  "vllm": "0.32.0",
+  "torch": "2.13.0",
+  "model_manifest_sha256": "e3acdf3978165d1484f2cb6f51018ad40fd1e3c2570b312a74c6d653e6da5dbb",
+  "source_hashes": {
+    "original": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    },
+    "repeat": {
+      "src/turbollm/__init__.py": "760efad94d967e64fddb6f071226afe285f2429463e6ef0838e3c4e070e47314",
+      "src/turbollm/policy.py": "864b4593aab7d47e918a9e8f4289b736897680aaf37aa5342a6156aa6cce1b03",
+      "src/turbollm/vllm_scheduler.py": "ee626183d3b44f78cb114f8022973b5587a3fb3b778a1d3180d585458f019fdf"
+    }
+  },
+  "upstream_patch_state": {
+    "path": "/root/autodl-tmp/turbollm-v2/.venv/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+    "patched": true,
+    "sha256": "30c4418d0c8e823b3e64e386b15af012b7d97817b6fb9eeb6ce5914503f39371"
+  },
+  "policy_config": {
+    "coefficients": [
+      10.399183563605852,
+      0.0,
+      0.10184102086167074,
+      0.040000157685720614,
+      0.0
+    ],
+    "decode_horizon": 16
+  },
+  "runs": [
+    {
+      "variant": "original",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 20.569619942456484,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.4375384681475643,
+        "output_tokens_s": 398.257236784983,
+        "ttft_p50_ms": 7209.333774633706,
+        "ttft_p95_ms": 13976.397411199285,
+        "tpot_p95_ms": 23.885250319395322,
+        "arrival_lag_p95_ms": 13.818891765549779
+      }
+    },
+    {
+      "variant": "repeat",
+      "seed": 124,
+      "workload_sha256": "c170e3ac25984ef6f77cfc2f2eb4d752eb55db4e124ebf24c061c1000a4c1148",
+      "request_metrics": {
+        "statuses": {
+          "completed": 48
+        },
+        "ttft_target_ms": 1000,
+        "tpot_target_ms": 40,
+        "elapsed_s": 21.16591867338866,
+        "total_arrivals": 48,
+        "completed": 48,
+        "slo_pass": 9,
+        "slo_pass_fraction_all_arrivals": 0.1875,
+        "goodput_requests_s": 0.42521187664372245,
+        "output_tokens_s": 387.03729927393044,
+        "ttft_p50_ms": 7233.019242994487,
+        "ttft_p95_ms": 13789.589842082933,
+        "tpot_p95_ms": 23.495471053267167,
+        "arrival_lag_p95_ms": 13.938081357628107
+      }
+    }
+  ],
+  "output_comparisons": [
+    {
+      "seed": 124,
+      "identical": 24,
+      "total": 48
+    }
+  ],
+  "completed": true
+}

@@ -25,6 +25,8 @@ def main():
     p.add_argument("--port", type=int, default=8210)
     p.add_argument("--trace", action="store_true")
     p.add_argument("--batch-invariant", action="store_true")
+    p.add_argument("--repeat-baseline", action="store_true",
+                   help="Run the original implementation twice as a numerical control")
     args = p.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     baseline = args.baseline.resolve()
@@ -35,13 +37,15 @@ def main():
     from benchmark import make_workload
     from run_matrix import stop, wait_ready
 
-    roots = {"original": baseline, "incremental": candidate}
+    other = "repeat" if args.repeat_baseline else "incremental"
+    roots = {"original": baseline, other: baseline if args.repeat_baseline else candidate}
     sources = {name: {str(f.relative_to(root)): digest(f)
                       for f in sorted((root / "src").rglob("*.py"))}
                for name, root in roots.items()}
-    changed = {key for key in sources["original"].keys() | sources["incremental"].keys()
-               if sources["original"].get(key) != sources["incremental"].get(key)}
-    if changed != {"src/turbollm/policy.py"}:
+    changed = {key for key in sources["original"].keys() | sources[other].keys()
+               if sources["original"].get(key) != sources[other].get(key)}
+    expected = set() if args.repeat_baseline else {"src/turbollm/policy.py"}
+    if changed != expected:
         raise ValueError(f"Unexpected runtime source differences: {changed}")
     subprocess.run([sys.executable, str(tools / "patch_vllm.py")], check=True)
     patch_state = json.loads(subprocess.check_output(
@@ -53,6 +57,7 @@ def main():
     result = {
         "seeds": args.seed, "kv_blocks": args.kv_blocks, "eager": args.eager,
         "trace": args.trace, "batch_invariant": args.batch_invariant,
+        "repeat_baseline": args.repeat_baseline,
         "vllm": importlib.metadata.version("vllm"), "torch": importlib.metadata.version("torch"),
         "model_manifest_sha256": digest(args.model / "download-manifest.json"),
         "source_hashes": sources, "upstream_patch_state": patch_state,

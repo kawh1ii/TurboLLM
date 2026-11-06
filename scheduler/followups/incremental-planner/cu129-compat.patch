@@ -1,0 +1,35 @@
+--- a/tools/patch_vllm.py
++++ b/tools/patch_vllm.py
+@@ -16,7 +16,10 @@
+ args = parser.parse_args()
+ if sys.prefix == sys.base_prefix:
+     raise SystemExit("Refusing to patch a base environment; use an isolated venv")
+-if importlib.metadata.version("vllm") != manifest["version"]:
++# The verified official CUDA 12.9 wheel adds only a local version suffix.
++# The scheduler and proposer file hashes are checked below.
++allowed_versions = {manifest["version"], manifest["version"] + "+cu129"}
++if importlib.metadata.version("vllm") not in allowed_versions:
+     raise SystemExit("vLLM version does not match the audited manifest")
+ spec = importlib.util.find_spec("vllm")
+ target = Path(spec.origin).parent / "v1/core/sched/scheduler.py"
+--- a/src/turbollm/vllm_scheduler.py
++++ b/src/turbollm/vllm_scheduler.py
+@@ -25,7 +25,8 @@
+     """Unchanged native scheduling, with identical timing instrumentation."""
+ 
+     def __init__(self, *args, **kwargs):
+-        if importlib.metadata.version("vllm") != "0.32.0":
++        vllm_version = importlib.metadata.version("vllm")
++        if vllm_version not in {"0.32.0", "0.32.0+cu129"}:
+             raise RuntimeError("Adapter is audited only against vLLM 0.32.0")
+         super().__init__(*args, **kwargs)
+         if self.scheduler_config.async_scheduling:
+@@ -52,7 +53,7 @@
+             target.parent.mkdir(parents=True, exist_ok=True)
+             self._trace = target.open("a", buffering=1)
+             self._emit({"event": "init", "scheduler": type(self).__name__,
+-                        "vllm": "0.32.0", "pid": os.getpid(),
++                        "vllm": vllm_version, "pid": os.getpid(),
+                         "kv_blocks": self.kv_cache_config.num_blocks,
+                         "free_blocks_initial": self.kv_cache_manager.block_pool.get_num_free_blocks(),
+                         "block_size": self.block_size,
